@@ -64,7 +64,7 @@ protected:
     void genCube();
     void genPyra();
     void genObj();
-    void genSphere();
+    void genObject(QString name);
     void prepset();
     QMatrix4x4 transform(QMatrix4x4 shape);
 

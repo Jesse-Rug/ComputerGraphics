@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = OpenGL_transformations
+TARGET = OpenGL_shading
 TEMPLATE = app
 CONFIG += c++14
 
@@ -21,8 +21,8 @@ SOURCES += main.cpp\
     genPyra.cpp \
     genObj.cpp \
     transform.cpp \
-    genSphere.cpp \
-    prepset.cpp
+    prepset.cpp \
+    genObject.cpp
 
 HEADERS  += mainwindow.h \
     mainview.h \

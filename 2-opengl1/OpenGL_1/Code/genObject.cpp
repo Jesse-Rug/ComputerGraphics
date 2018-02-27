@@ -1,12 +1,14 @@
 #include "mainview.h"
 
-void MainView::genSphere(){
-    Model sphere(":/models/sphere.obj");
-    sphere.unitize();
+void MainView::genObject(QString name){
+    //Model object(":/models/sphere.obj");
+    Model object(name);
+    object.unitize();
 
-    //QVector<QVector3D> vertices =  sphere.getVertices();
-    QVector<QVector3D> vertices =  sphere.getVertices_indexed();
-    QVector<unsigned int> indices = sphere.getIndices();
+    //QVector<QVector3D> vertices =  object.getVertices();
+    QVector<QVector3D> vertices =  object.getVertices_indexed();
+    QVector<unsigned int> indices = object.getIndices();
+    QVector<QVector3D> normals =  object.getNormals_indexed();
     std::vector<float> buffer;
     //buffer.reserve(2*sizeof(vertices));//im adding 3 colour to the 3 location bytes
 
@@ -19,6 +21,10 @@ void MainView::genSphere(){
         buffer.push_back((float)(rand() % 100) / 100);
         buffer.push_back((float)(rand() % 100) / 100);
         buffer.push_back((float)(rand() % 100) / 100);
+
+	buffer.push_back(normals.at(index).x());
+        buffer.push_back(normals.at(index).y());
+        buffer.push_back(normals.at(index).z());
     }
 
     glGenVertexArrays(1, &sphVAO);
@@ -36,16 +42,15 @@ void MainView::genSphere(){
 
     verticeNumber = 4 * indices.size();
     /* i can feel the angel losing it's wings at this magic number "4" but
-    just indices.size() gave me half the triangles on a half sphere.
+    just indices.size() gave me half the triangles on a half object.
     I have no idea why.
     */
 
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), 0);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), ((GLvoid*) (3 * sizeof(GLfloat))));
-
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), 0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), ((GLvoid*) (6 * sizeof(GLfloat))));
 
 
 }
