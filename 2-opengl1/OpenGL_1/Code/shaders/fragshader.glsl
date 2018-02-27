@@ -10,11 +10,15 @@ in vec3 vertColor;
 // Specify the Uniforms of the fragment shaders
 // uniform vec3 lightPosition; // for example
 
+uniform mat3 normals;
+
 // Specify the output of the fragment shader
 // Usually a vec4 describing a color (Red, Green, Blue, Alpha/Transparency)
 out vec4 fColor;
 
+
 void main()
 {
-    fColor = vec4(vertColor, 1.0);
+
+    fColor = vec4(normals*vertColor, 1.0);
 }

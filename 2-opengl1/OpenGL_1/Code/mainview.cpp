@@ -99,7 +99,7 @@ void MainView::createShaderProgram()
 
     u_model = shaderProgram.uniformLocation("u_model");
     u_project= shaderProgram.uniformLocation("u_project");
-
+    normals = shaderProgram.uniformLocation("normals");
 }
 
 // --- OpenGL drawing
@@ -116,29 +116,36 @@ void MainView::paintGL() {
 
     shaderProgram.bind();
 
+
     glUniformMatrix4fv(u_project, 1, GL_FALSE, projectM.data());
 
     // Draw here
 
     QMatrix4x4 iden = transform(modelC);
+    QMatrix3x3 normalIden(iden.normalMatrix());
 
     glUniformMatrix4fv(u_model, 1, GL_FALSE, iden.data());
+    glUniformMatrix3fv(normals, 1, GL_FALSE, normalIden.data());
     glBindVertexArray(cubVAO);
     glBindBuffer(GL_ARRAY_BUFFER, cubVBO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cubIBO);
-    glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_BYTE, (GLvoid*)0);
+    //glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_BYTE, (GLvoid*)0);
 
     iden = transform(modelP);
+    normalIden = iden.normalMatrix();
 
     glUniformMatrix4fv(u_model, 1, GL_FALSE, iden.data());
+    glUniformMatrix3fv(normals, 1, GL_FALSE, normalIden.data());
     glBindVertexArray(pyrVAO);
     glBindBuffer(GL_ARRAY_BUFFER, pyrVBO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, pyrIBO);
-    glDrawElements(GL_TRIANGLES, 18, GL_UNSIGNED_BYTE, (GLvoid*)0);
+    //glDrawElements(GL_TRIANGLES, 18, GL_UNSIGNED_BYTE, (GLvoid*)0);
 
     iden = transform(modelS);
+    normalIden = iden.normalMatrix();
 
     glUniformMatrix4fv(u_model, 1, GL_FALSE, iden.data());
+    glUniformMatrix3fv(normals, 1, GL_FALSE, normalIden.data());
     glBindVertexArray(sphVAO);
     glBindBuffer(GL_ARRAY_BUFFER, sphVBO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, sphIBO);

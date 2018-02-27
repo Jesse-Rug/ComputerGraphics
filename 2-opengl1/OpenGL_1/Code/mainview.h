@@ -24,7 +24,7 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
     GLuint cubVAO, cubVBO, cubIBO;
     GLuint pyrVAO, pyrVBO, pyrIBO;
     GLuint sphVAO, sphVBO, sphIBO;
-    GLuint u_model, u_project;
+    GLuint u_model, u_project, normals;
     QMatrix4x4 modelC, modelP, modelS;
     QMatrix4x4 projectM;
     float angleX, angleY, angleZ, magni;
