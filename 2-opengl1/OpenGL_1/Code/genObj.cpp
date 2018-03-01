@@ -3,5 +3,5 @@
 void MainView::genObj(){
     genCube();
     genPyra();
-    genObject(":/models/sphere.obj");
+    genObject(":/models/cat.obj");
 }

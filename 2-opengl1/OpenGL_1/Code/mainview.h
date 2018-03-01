@@ -24,11 +24,11 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
     GLuint cubVAO, cubVBO, cubIBO;
     GLuint pyrVAO, pyrVBO, pyrIBO;
     GLuint sphVAO, sphVBO, sphIBO;
-    GLuint u_model, u_project, normals;
+    GLuint u_model, u_project, normals, lights, material;
     QMatrix4x4 modelC, modelP, modelS;
     QMatrix4x4 projectM;
     float angleX, angleY, angleZ, magni;
-    QOpenGLShaderProgram shaderProgram;
+    QOpenGLShaderProgram shaderProgram, shaderProgramG, shaderProgramP;
 
 public:
     enum ShadingMode : GLuint
@@ -73,6 +73,8 @@ private slots:
 
 private:
     void createShaderProgram();
+    void createShaderGouraund();
+    void createShaderPhong();
 
 };
 

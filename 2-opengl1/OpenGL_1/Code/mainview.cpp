@@ -77,20 +77,22 @@ void MainView::initializeGL() {
     // Set the color of the screen to be black on clear (new frame)
     glClearColor(0.2f, 0.5f, 0.7f, 0.0f);
 
+
     genObj();
 
     prepset();
 
-    createShaderProgram();
+    createShaderPhong();
+
 }
 
 void MainView::createShaderProgram()
 {
     // Create shader program
     shaderProgram.addShaderFromSourceFile(QOpenGLShader::Vertex,
-                                           ":/shaders/vertshader.glsl");
+                                           ":/shaders/vertshader_normal.glsl");
     shaderProgram.addShaderFromSourceFile(QOpenGLShader::Fragment,
-                                           ":/shaders/fragshader.glsl");
+                                           ":/shaders/fragshader_normal.glsl");
     shaderProgram.link();
 
     if (!shaderProgram.link()){
@@ -100,6 +102,49 @@ void MainView::createShaderProgram()
     u_model = shaderProgram.uniformLocation("u_model");
     u_project= shaderProgram.uniformLocation("u_project");
     normals = shaderProgram.uniformLocation("normals");
+}
+
+
+void MainView::createShaderPhong(){
+    shaderProgram.addShaderFromSourceFile(QOpenGLShader::Vertex,
+                                           ":/shaders/vertshader_phong.glsl");
+    shaderProgram.addShaderFromSourceFile(QOpenGLShader::Fragment,
+                                           ":/shaders/fragshader_phong.glsl");
+    shaderProgram.link();
+
+    if (!shaderProgram.link()){
+        exit(EXIT_FAILURE);
+    }
+
+    u_model = shaderProgram.uniformLocation("u_model");
+    u_project= shaderProgram.uniformLocation("u_project");
+    normals = shaderProgram.uniformLocation("normals");
+    lights = shaderProgram.uniformLocation("ligths");
+    material = shaderProgram.uniformLocation("material");
+
+
+
+}
+
+void MainView::createShaderGouraund(){
+    shaderProgram.addShaderFromSourceFile(QOpenGLShader::Vertex,
+                                           ":/shaders/vertshader_gouraud.glsl");
+    shaderProgram.addShaderFromSourceFile(QOpenGLShader::Fragment,
+                                           ":/shaders/fragshader_gouraund.glsl");
+    shaderProgram.link();
+
+    if (!shaderProgram.link()){
+        exit(EXIT_FAILURE);
+    }
+
+    u_model = shaderProgram.uniformLocation("u_model");
+    u_project= shaderProgram.uniformLocation("u_project");
+    normals = shaderProgram.uniformLocation("normals");
+    lights = shaderProgram.uniformLocation("ligths");
+    material = shaderProgram.uniformLocation("material");
+
+
+
 }
 
 // --- OpenGL drawing
@@ -123,6 +168,18 @@ void MainView::paintGL() {
 
     QMatrix4x4 iden = transform(modelC);
     QMatrix3x3 normalIden(iden.normalMatrix());
+    QMatrix4x4 lightMat;
+    QVector3D light;
+    lightMat.setToIdentity();
+    transform(lightMat);
+    light.setX(lightMat(0,0));
+    light.setY(lightMat(1,1));
+    light.setZ(lightMat(2,2));
+
+    QVector3D  mat(0.5f, 0.8f, 0.3f);
+
+    shaderProgram.setUniformValue("lights", light);
+    shaderProgram.setUniformValue("material", mat);
 
     glUniformMatrix4fv(u_model, 1, GL_FALSE, iden.data());
     glUniformMatrix3fv(normals, 1, GL_FALSE, normalIden.data());
@@ -182,6 +239,7 @@ void MainView::setRotation(int rotateX, int rotateY, int rotateZ)
     angleY = rotateY;
     angleZ = rotateZ;
 
+
     repaint();
 
 }
@@ -198,7 +256,7 @@ void MainView::setScale(int scale)
 void MainView::setShadingMode(ShadingMode shading)
 {
     qDebug() << "Changed shading to" << shading;
-    Q_UNIMPLEMENTED();
+
 }
 
 // --- Private helpers
