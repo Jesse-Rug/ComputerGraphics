@@ -25,6 +25,7 @@ MainView::MainView(QWidget *parent) : QOpenGLWidget(parent) {
  *
  */
 MainView::~MainView() {
+    glDeleteTextures(1, &textureHandle);
     glDeleteBuffers(1, &cubVBO);
     glDeleteBuffers(1, &cubIBO);
     glDeleteBuffers(1, &pyrVBO);
@@ -74,6 +75,11 @@ void MainView::initializeGL() {
     // Default is GL_LESS
     glDepthFunc(GL_LEQUAL);
 
+    //loadtexture.cc
+    glGenTextures(1, &textureHandle);
+    glBindTexture(GL_TEXTURE_2D, textureHandle);
+
+
     // Set the color of the screen to be black on clear (new frame)
     glClearColor(0.2f, 0.5f, 0.7f, 0.0f);
 
@@ -82,7 +88,7 @@ void MainView::initializeGL() {
 
     prepset();
 
-    createShaderPhong();
+    createShaderGouraund();
 
 }
 
@@ -115,6 +121,8 @@ void MainView::createShaderPhong(){
     if (!shaderProgram.link()){
         exit(EXIT_FAILURE);
     }
+
+    qDebug() << "linked";
 
     u_model = shaderProgram.uniformLocation("u_model");
     u_project= shaderProgram.uniformLocation("u_project");
@@ -168,15 +176,9 @@ void MainView::paintGL() {
 
     QMatrix4x4 iden = transform(modelC);
     QMatrix3x3 normalIden(iden.normalMatrix());
-    QMatrix4x4 lightMat;
-    QVector3D light;
-    lightMat.setToIdentity();
-    transform(lightMat);
-    light.setX(lightMat(0,0));
-    light.setY(lightMat(1,1));
-    light.setZ(lightMat(2,2));
+    QVector3D light(5.0, 5.0, -10.0);
 
-    QVector3D  mat(0.5f, 0.8f, 0.3f);
+    QVector3D  mat(0.5f, 0.4f, 0.3f);
 
     shaderProgram.setUniformValue("lights", light);
     shaderProgram.setUniformValue("material", mat);

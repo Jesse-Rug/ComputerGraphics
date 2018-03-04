@@ -5,7 +5,7 @@
 
 // Specify the input locations of attributes
 layout (location = 0) in vec3 vertCoordinates_in;
-layout (location = 1) in vec3 vertColor_in;
+layout (location = 1) in vec3 vertNormals_in;
 
 // Specify the Uniforms of the vertex shader
    uniform mat4 u_model;
@@ -29,21 +29,114 @@ void main()
     vec4 model = u_model * vec4(vertCoordinates_in, 1.0);
     gl_Position = u_project * model;
     //gl_Position = vec4(vertCoordinates_in, 1.0);
-    vec3 H = (lights + gl_Position.xyz)/length(lights * gl_Position.xyz);
-    vec3  N = normals * gl_Position.xyz;
 
-    float a = material.x;
+    vec3  lightvec = normalize(lights - vec3(model));
+    // "normals" is the normal ADJUSTMENT matrix.
+    vec3  adjust = normals * vertNormals_in;
+    vec3  norm = adjust * gl_Position.xyz;
+    vec3 reflect = reflect(-lightvec, adjust);
+    vec3 incomL = normalize( gl_Position.xyz );
 
-    float l = dot(lights, N);
-    l = l>0 ? (l*material.y) : 0;
+    float ambient = material.x;
 
-    float s = dot(lights, H);
-    s = s>0 ? (s*material.z) : 0;
-    s = pow(s, 20);
+    float diffuse = max(dot(lightvec, adjust), 0.0);
+    diffuse = diffuse * material.y;
 
-    float gouraund = a + l + s;
-    vec3 col = vec3(1, 0 ,1);
+
+    float specular = dot(reflect, incomL);
+    specular = max(specular * material.z , 0);
+    specular = pow(specular, 20);
+
+    //float gouraund = ambient + defuse + specular;
+    float gouraund = specular;
+    vec3 col = vec3(0.5, 0.5, 0.5);
 
     vertColor = col * gouraund;
-
 }
+
+/*
+
+
+in vec3 VertexPosition;
+in vec3 VertexNormal;
+
+
+struct LightInfo
+{
+        vec3 Position;	//Light Position in eye-coords
+        vec3 La;		//Ambient light intensity
+        vec3 Ld;		//Diffuse light intensity
+        vec3 Ls;		//Specular light intensity
+};
+
+struct MaterialInfo
+{
+        vec3 Ka;			//Ambient reflectivity
+        vec3 Kd;			//Diffuse reflectivity
+        vec3 Ks;			//Specular reflectivity
+        float Shininess;	//Specular shininess factor
+};
+
+uniform LightInfo Light[LIGHTCOUNT];
+uniform MaterialInfo Material;
+
+uniform mat4 u_model;
+uniform mat3 NormalMatrix;
+uniform mat4 MVP;
+
+
+void getEyeSpace( out vec3 norm, out vec3 position )
+{
+        norm = normalize( NormalMatrix * VertexNormal );
+        position = vec3( u_model * vec4( VertexPosition, 1 ) );
+}
+
+vec3 light( int lightIndex, vec3 position, vec3 norm )
+{
+        vec3 s = normalize( vec3( lightPos - position ) );
+        vec3 v = normalize( -position.xyz );
+        vec3 r = reflect( -s, norm );
+
+        vec3 ambient = 0.1 * Material.Ka;
+
+        float sDotN = max( dot( s, norm ), 0.0 );
+        vec3 diffuse = 1 * Material.Kd * sDotN;
+
+        vec3 spec = vec3( 0.0 );
+        if ( sDotN > 0.0 )
+                spec =1 * Material.Ks * pow( max( dot(r,v) , 0.0 ), Material.Shininess );
+
+        return ambient + diffuse + spec;
+}
+
+void main()
+{
+        vec3 norm = normalize( NormalMatrix * VertexNormal );
+        vec3 position = vec3( u_model * vec4( VertexPosition, 1 ) );
+        getEyeSpace( eyeNorm, position );
+
+        data.FrontColor = vec3(0);
+
+        vec3 lightvec = normalize( vec3( lightPos - position ) );
+        vec3 incomL = normalize( -position.xyz );
+        vec3 optimR = reflect( -lightvec, norm );
+
+        vec3 ambient = 0.1 * material.x;
+
+        float sDotN = max( dot( lightvec, norm ), 0.0 );
+        vec3 diffuse = 1 * material.y * sDotN;
+
+        vec3 spec = vec3( 0.0 );
+        if ( sDotN > 0.0 )
+                spec = 1 * material.z * pow( max( dot(optimR, incomL) , 0.0 ), Material.Shininess );
+
+        return ambient + diffuse + spec;
+
+        //data.TexCoord = VertexTex;
+        gl_Position = MVP * vec4( VertexPosition, 1 );
+}
+
+// ambient = mat.x 
+// defuse = mat.y
+// specular = mat.z
+  */
