@@ -88,7 +88,11 @@ void MainView::initializeGL() {
 
     prepset();
 
+<<<<<<< HEAD
+    setShadingMode(PHONG);
+=======
     createShaderGouraund();
+>>>>>>> 1640ec216327627e59d523fe06197fddba3fb173
 
 }
 
@@ -108,6 +112,8 @@ void MainView::createShaderProgram()
     u_model = shaderProgram.uniformLocation("u_model");
     u_project= shaderProgram.uniformLocation("u_project");
     normals = shaderProgram.uniformLocation("normals");
+    lights = shaderProgram.uniformLocation("ligths");
+    material = shaderProgram.uniformLocation("material");
 }
 
 
@@ -176,9 +182,19 @@ void MainView::paintGL() {
 
     QMatrix4x4 iden = transform(modelC);
     QMatrix3x3 normalIden(iden.normalMatrix());
+<<<<<<< HEAD
+
+    QVector3D light(0,1,-6);
+
+    light.project(iden, projectM, QRect());
+
+
+    QVector3D  mat(0.6f, 0.7f, 0.4f);
+=======
     QVector3D light(5.0, 5.0, -10.0);
 
     QVector3D  mat(0.5f, 0.4f, 0.3f);
+>>>>>>> 1640ec216327627e59d523fe06197fddba3fb173
 
     shaderProgram.setUniformValue("lights", light);
     shaderProgram.setUniformValue("material", mat);
@@ -258,7 +274,21 @@ void MainView::setScale(int scale)
 void MainView::setShadingMode(ShadingMode shading)
 {
     qDebug() << "Changed shading to" << shading;
-
+    switch (shading) {
+    case NORMAL:
+        shaderProgram.removeAllShaders();
+        createShaderProgram();
+        break;
+     case GOURAUD:
+        shaderProgram.removeAllShaders();
+        createShaderGouraund();
+        break;
+    default:
+        shaderProgram.removeAllShaders();
+        createShaderPhong();
+        break;
+    }
+    update();
 }
 
 // --- Private helpers

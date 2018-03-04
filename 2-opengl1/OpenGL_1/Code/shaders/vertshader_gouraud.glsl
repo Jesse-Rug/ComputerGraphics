@@ -29,6 +29,12 @@ void main()
     vec4 model = u_model * vec4(vertCoordinates_in, 1.0);
     gl_Position = u_project * model;
     //gl_Position = vec4(vertCoordinates_in, 1.0);
+<<<<<<< HEAD
+     vec3 L = lights - gl_Position.xyz;
+    vec3 H = (L + gl_Position.xyz)/length(L * gl_Position.xyz);
+    vec3  N = normals * gl_Position.xyz;
+=======
+>>>>>>> 1640ec216327627e59d523fe06197fddba3fb173
 
     vec3  lightvec = normalize(lights - vec3(model));
     // "normals" is the normal ADJUSTMENT matrix.
@@ -37,10 +43,19 @@ void main()
     vec3 reflect = reflect(-lightvec, adjust);
     vec3 incomL = normalize( gl_Position.xyz );
 
+<<<<<<< HEAD
+    float l = dot(L, N);
+    l = l>0 ? (l*material.y) : 0;
+
+    float s = dot(N, H);
+    s = s>0 ? (s*material.z) : 0;
+    s = pow(s, 20);
+=======
     float ambient = material.x;
 
     float diffuse = max(dot(lightvec, adjust), 0.0);
     diffuse = diffuse * material.y;
+>>>>>>> 1640ec216327627e59d523fe06197fddba3fb173
 
 
     float specular = dot(reflect, incomL);

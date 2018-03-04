@@ -29,7 +29,7 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
     QMatrix4x4 modelC, modelP, modelS;
     QMatrix4x4 projectM;
     float angleX, angleY, angleZ, magni;
-    QOpenGLShaderProgram shaderProgram, shaderProgramG, shaderProgramP;
+    QOpenGLShaderProgram shaderProgram;
 
 public:
     enum ShadingMode : GLuint
