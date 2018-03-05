@@ -22,7 +22,9 @@ SOURCES += main.cpp\
     genObj.cpp \
     transform.cpp \
     prepset.cpp \
-    genObject.cpp
+    genObject.cpp \
+    utility.cpp \
+    createShader.cpp
 
 HEADERS  += mainwindow.h \
     mainview.h \

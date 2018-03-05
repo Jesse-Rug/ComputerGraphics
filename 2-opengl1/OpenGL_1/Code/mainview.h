@@ -24,12 +24,13 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
     GLuint cubVAO, cubVBO, cubIBO;
     GLuint pyrVAO, pyrVBO, pyrIBO;
     GLuint sphVAO, sphVBO, sphIBO;
-    GLuint textureHandle;
-    GLuint u_model, u_project, normals, lights, material;
+    GLuint textureHandle, samplerHandle;
+    GLuint u_model, u_project, normals, lights, material, sampler;
     QMatrix4x4 modelC, modelP, modelS;
     QMatrix4x4 projectM;
     float angleX, angleY, angleZ, magni;
-    QOpenGLShaderProgram shaderProgram, shaderProgramG, shaderProgramP;
+    QOpenGLShaderProgram  shaderProgramG, shaderProgramP, shaderProgramN;
+    QOpenGLShaderProgram *shaderProgram;
 
 public:
     enum ShadingMode : GLuint
@@ -62,20 +63,23 @@ protected:
     void wheelEvent(QWheelEvent *ev);
 
 
+
+private slots:
+    void onMessageLogged( QOpenGLDebugMessage Message );
+
+private:
+    void createShaders();
+    void createShaderNormal();
+    void createShaderGouraund();
+    void createShaderPhong();
+    QVector<quint8> imageToBytes(QImage image);
+
     void genCube();
     void genPyra();
     void genObj();
     void genObject(QString name);
     void prepset();
     QMatrix4x4 transform(QMatrix4x4 shape);
-
-private slots:
-    void onMessageLogged( QOpenGLDebugMessage Message );
-
-private:
-    void createShaderProgram();
-    void createShaderGouraund();
-    void createShaderPhong();
 
 };
 

@@ -5,16 +5,17 @@
 
 // Specify the inputs to the fragment shader
 // These must have the same type and name!
-in vec3 vertColor;
-in vec3 H;
-in vec3 N;
+in vec3 vertCoord;
+in vec3 vertNormal;
+in vec2 vertTex;
 
 // Specify the Uniforms of the fragment shaders
 // uniform vec3 lightPosition; // for example
 
-uniform mat3 normals;
 uniform vec3 lights;
 uniform vec3 material;
+uniform mat4 u_project;
+uniform sampler2D sampler;
 //uniform vec3 H, N;
 
 // Specify the output of the fragment shader
@@ -26,21 +27,22 @@ void main()
 {
 
 
+    vec3  lightvec = normalize(lights - vertCoord);
+    vec3 reflect =  reflect( lightvec, vertNormal);
+    vec4 vieuwvec = u_project * vec4(vertCoord,1.0);
+    vec3 incomL = normalize(-1 * vieuwvec.xyz);
 
-    vec3 colLight = vec3(0,0,0);
+    float ambient = material.x;
 
-    float a = material.x;
+    float diffuse = max(dot(lightvec, vertNormal), 0.0);
+    diffuse = diffuse * material.y;
 
-    float l = dot(lights, N);
-    l = l > 0 ? (l * material.y) : 0;
+    float specular = dot(reflect, incomL);
+    specular = max(specular * material.z , 0);
+    specular = pow(specular, 20);
 
-    float s = dot(lights, H);
-    s = s > 0 ? (s*material.z) : 0;
-    s = pow(s, 20);
+    float gouraund = ambient + diffuse;
 
-    float gouraund = a + l + s;
-
-
-
-    fColor = vec4((gouraund*vertColor), 1.0)/3;
+    vec4 textureColor = texture2D(sampler, vertTex);
+    fColor = gouraund * textureColor;
 }

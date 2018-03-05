@@ -6,20 +6,20 @@
 // Specify the input locations of attributes
 layout (location = 0) in vec3 vertCoordinates_in;
 layout (location = 1) in vec3 vertNormal_in;
+layout (location = 2) in vec2 vertTex_in;
 
 // Specify the Uniforms of the vertex shader
    uniform mat4 u_model;
    uniform mat4 u_project;
    uniform mat3 normals;
-   uniform vec3 lights;
-   uniform vec3 material;
    //uniform vec4 fragNormals;
    //hands off off uniforms, they don't change
    //uniform vec3 H, N;
 
 // Specify the output of the vertex stage
+out vec3 vertCoord;
 out vec3 vertNormal;
-out vec3 ;
+out vec2 vertTex;
 //^^
 
 void main()
@@ -31,7 +31,8 @@ void main()
     gl_Position = u_project * model;
     //gl_Position = vec4(vertCoordinates_in, 1.0);
 
-
+    vertCoord = model.xyz;
     vertNormal =  vertNormal_in * normals;
+    vertTex = vertTex_in;
 
 }

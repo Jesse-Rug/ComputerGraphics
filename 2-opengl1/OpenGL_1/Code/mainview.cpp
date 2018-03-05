@@ -35,6 +35,9 @@ MainView::~MainView() {
     glDeleteVertexArrays(1, &cubVAO);
     glDeleteVertexArrays(1, &pyrVAO);
     glDeleteVertexArrays(1, &sphVAO);
+
+    glDeleteSamplers(1, &samplerHandle);
+    glDeleteTextures(1, &textureHandle);
     debugLogger->stopLogging();
 
     qDebug() << "MainView destructor";
@@ -76,9 +79,17 @@ void MainView::initializeGL() {
     glDepthFunc(GL_LEQUAL);
 
     //loadtexture.cc
+    QImage imageq(":/textures/cat_diff");
+    QVector<quint8> imagev(imageToBytes(imageq));
     glGenTextures(1, &textureHandle);
     glBindTexture(GL_TEXTURE_2D, textureHandle);
-
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, imageq.width(), imageq.height(), 0,
+                 GL_RGBA, GL_UNSIGNED_BYTE, imagev.data());
+    glEnable(GL_TEXTURE_2D);
 
     // Set the color of the screen to be black on clear (new frame)
     glClearColor(0.2f, 0.5f, 0.7f, 0.0f);
@@ -88,72 +99,11 @@ void MainView::initializeGL() {
 
     prepset();
 
-    createShaderGouraund();
+    createShaders();
 
 }
 
-void MainView::createShaderProgram()
-{
-    // Create shader program
-    shaderProgram.addShaderFromSourceFile(QOpenGLShader::Vertex,
-                                           ":/shaders/vertshader_normal.glsl");
-    shaderProgram.addShaderFromSourceFile(QOpenGLShader::Fragment,
-                                           ":/shaders/fragshader_normal.glsl");
-    shaderProgram.link();
 
-    if (!shaderProgram.link()){
-        exit(EXIT_FAILURE);
-    }
-
-    u_model = shaderProgram.uniformLocation("u_model");
-    u_project= shaderProgram.uniformLocation("u_project");
-    normals = shaderProgram.uniformLocation("normals");
-}
-
-
-void MainView::createShaderPhong(){
-    shaderProgram.addShaderFromSourceFile(QOpenGLShader::Vertex,
-                                           ":/shaders/vertshader_phong.glsl");
-    shaderProgram.addShaderFromSourceFile(QOpenGLShader::Fragment,
-                                           ":/shaders/fragshader_phong.glsl");
-    shaderProgram.link();
-
-    if (!shaderProgram.link()){
-        exit(EXIT_FAILURE);
-    }
-
-    qDebug() << "linked";
-
-    u_model = shaderProgram.uniformLocation("u_model");
-    u_project= shaderProgram.uniformLocation("u_project");
-    normals = shaderProgram.uniformLocation("normals");
-    lights = shaderProgram.uniformLocation("ligths");
-    material = shaderProgram.uniformLocation("material");
-
-
-
-}
-
-void MainView::createShaderGouraund(){
-    shaderProgram.addShaderFromSourceFile(QOpenGLShader::Vertex,
-                                           ":/shaders/vertshader_gouraud.glsl");
-    shaderProgram.addShaderFromSourceFile(QOpenGLShader::Fragment,
-                                           ":/shaders/fragshader_gouraund.glsl");
-    shaderProgram.link();
-
-    if (!shaderProgram.link()){
-        exit(EXIT_FAILURE);
-    }
-
-    u_model = shaderProgram.uniformLocation("u_model");
-    u_project= shaderProgram.uniformLocation("u_project");
-    normals = shaderProgram.uniformLocation("normals");
-    lights = shaderProgram.uniformLocation("ligths");
-    material = shaderProgram.uniformLocation("material");
-
-
-
-}
 
 // --- OpenGL drawing
 
@@ -167,7 +117,7 @@ void MainView::paintGL() {
     // Clear the screen before rendering
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    shaderProgram.bind();
+    shaderProgram->bind();
 
 
     glUniformMatrix4fv(u_project, 1, GL_FALSE, projectM.data());
@@ -180,8 +130,8 @@ void MainView::paintGL() {
 
     QVector3D  mat(0.5f, 0.4f, 0.3f);
 
-    shaderProgram.setUniformValue("lights", light);
-    shaderProgram.setUniformValue("material", mat);
+    shaderProgram->setUniformValue("lights", light);
+    shaderProgram->setUniformValue("material", mat);
 
     glUniformMatrix4fv(u_model, 1, GL_FALSE, iden.data());
     glUniformMatrix3fv(normals, 1, GL_FALSE, normalIden.data());
@@ -203,6 +153,9 @@ void MainView::paintGL() {
     iden = transform(modelS);
     normalIden = iden.normalMatrix();
 
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, textureHandle);
+    glUniform1i(sampler, 0);
     glUniformMatrix4fv(u_model, 1, GL_FALSE, iden.data());
     glUniformMatrix3fv(normals, 1, GL_FALSE, normalIden.data());
     glBindVertexArray(sphVAO);
@@ -210,7 +163,7 @@ void MainView::paintGL() {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, sphIBO);
     glDrawElements(GL_TRIANGLES, verticeNumber, GL_UNSIGNED_INT, (GLvoid*)0);
 
-    shaderProgram.release();
+    shaderProgram->release();
 }
 
 /**
@@ -258,6 +211,42 @@ void MainView::setScale(int scale)
 void MainView::setShadingMode(ShadingMode shading)
 {
     qDebug() << "Changed shading to" << shading;
+
+    if (shading == ShadingMode::PHONG){
+        u_model = shaderProgramP.uniformLocation("u_model");
+        u_project= shaderProgramP.uniformLocation("u_project");
+        normals = shaderProgramP.uniformLocation("normals");
+        lights = shaderProgramP.uniformLocation("ligths");
+        material = shaderProgramP.uniformLocation("material");
+        sampler = shaderProgramP.uniformLocation("sampler");
+
+        shaderProgram = &shaderProgramP;
+
+
+    }
+
+    if (shading == ShadingMode::NORMAL){
+        u_model = shaderProgramN.uniformLocation("u_model");
+        u_project= shaderProgramN.uniformLocation("u_project");
+        normals = shaderProgramN.uniformLocation("normals");
+        lights = 0;
+        material = 0;
+        sampler = 0;
+
+        shaderProgram = &shaderProgramN;
+    }
+
+    if (shading == ShadingMode::GOURAUD){
+        u_model = shaderProgramG.uniformLocation("u_model");
+        u_project= shaderProgramG.uniformLocation("u_project");
+        normals = shaderProgramG.uniformLocation("normals");
+        lights = shaderProgramG.uniformLocation("ligths");
+        material = shaderProgramG.uniformLocation("material");
+        sampler = shaderProgramG.uniformLocation("sampler");
+
+
+        shaderProgram = &shaderProgramG;
+    }
 
 }
 

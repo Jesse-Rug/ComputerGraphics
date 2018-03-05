@@ -7,8 +7,9 @@ void MainView::genObject(QString name){
 
     //QVector<QVector3D> vertices =  object.getVertices();
     QVector<QVector3D> vertices =  object.getVertices_indexed();
+    QVector<QVector3D> normals  =  object.getNormals_indexed();
+    QVector<QVector2D> textures =  object.getTextureCoords_indexed();
     QVector<unsigned int> indices = object.getIndices();
-    QVector<QVector3D> normals =  object.getNormals_indexed();
     std::vector<float> buffer;
     //buffer.reserve(2*sizeof(vertices));//im adding 3 colour to the 3 location bytes
 
@@ -17,14 +18,19 @@ void MainView::genObject(QString name){
         buffer.push_back(vertices.at(index).y());
         buffer.push_back(vertices.at(index).z());
 
-        //random  r,g,b values from [0-1]
+        /*random  r,g,b values from [0-1]
         buffer.push_back((float)(rand() % 100) / 100);
         buffer.push_back((float)(rand() % 100) / 100);
         buffer.push_back((float)(rand() % 100) / 100);
+        */
 
-	buffer.push_back(normals.at(index).x());
+        buffer.push_back(normals.at(index).x());
         buffer.push_back(normals.at(index).y());
         buffer.push_back(normals.at(index).z());
+
+        buffer.push_back((textures.at(index).x()));
+        buffer.push_back((textures.at(index).y()));
+
     }
 
     glGenVertexArrays(1, &sphVAO);
@@ -48,9 +54,12 @@ void MainView::genObject(QString name){
 
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
+    glEnableVertexAttribArray(2);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), 0);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), ((GLvoid*) (6 * sizeof(GLfloat))));
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), 0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), ((GLvoid*) (3 * sizeof(GLfloat))));
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), ((GLvoid*) (6 * sizeof(GLfloat))));
 
 
 }
