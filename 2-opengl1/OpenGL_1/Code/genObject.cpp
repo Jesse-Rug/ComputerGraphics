@@ -52,6 +52,8 @@ void MainView::genObject(QString name){
     I have no idea why.
     */
 
+
+
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
     glEnableVertexAttribArray(2);

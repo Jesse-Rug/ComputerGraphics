@@ -20,6 +20,12 @@ layout (location = 2) in vec2 vertTex_in;
 out vec3 vertColor;
 out vec2 vertTex;
 
+/*
+
+// ambient = mat.x
+// defuse = mat.y
+// specular = mat.z
+  */
 
 void main()
 {
@@ -54,9 +60,3 @@ void main()
     vertTex = vertTex_in;
 }
 
-/*
-
-// ambient = mat.x 
-// defuse = mat.y
-// specular = mat.z
-  */

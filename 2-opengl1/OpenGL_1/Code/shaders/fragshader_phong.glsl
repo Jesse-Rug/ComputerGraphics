@@ -16,7 +16,6 @@ uniform vec3 lights;
 uniform vec3 material;
 uniform mat4 u_project;
 uniform sampler2D sampler;
-//uniform vec3 H, N;
 
 // Specify the output of the fragment shader
 // Usually a vec4 describing a color (Red, Green, Blue, Alpha/Transparency)
@@ -25,8 +24,6 @@ out vec4 fColor;
 
 void main()
 {
-
-
     vec3  lightvec = normalize(lights - vertCoord);
     vec3 reflect =  reflect( lightvec, vertNormal);
     vec4 vieuwvec = u_project * vec4(vertCoord,1.0);

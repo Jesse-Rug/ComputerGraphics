@@ -36,7 +36,6 @@ MainView::~MainView() {
     glDeleteVertexArrays(1, &pyrVAO);
     glDeleteVertexArrays(1, &sphVAO);
 
-    glDeleteSamplers(1, &samplerHandle);
     glDeleteTextures(1, &textureHandle);
     debugLogger->stopLogging();
 
@@ -126,6 +125,7 @@ void MainView::paintGL() {
 
     QMatrix4x4 iden = transform(modelC);
     QMatrix3x3 normalIden(iden.normalMatrix());
+
     QVector3D light(5.0, 5.0, -10.0);
 
     QVector3D  mat(0.5f, 0.4f, 0.3f);
@@ -247,7 +247,6 @@ void MainView::setShadingMode(ShadingMode shading)
 
         shaderProgram = &shaderProgramG;
     }
-
 }
 
 // --- Private helpers
