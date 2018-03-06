@@ -1,0 +1,36 @@
+{
+    "Eye": [200, 200, 1000],
+    "Lights": [{
+        "position": [-1000, 600, 500],
+        "color": [1.0, 1.0, 1.0]
+    }],
+    "Objects": [
+        {
+            "type": "sphere",
+            "comment": "Red Sphere",
+            "position": [290, 170, -150],
+            "radius": 60,
+            "material": {
+                "color": [1.0, 0.0, 0.0],
+                "ka": 0.2,
+                "kd": 0.7,
+                "ks": 0.8,
+                "n": 32
+            }
+        },
+        {
+            "type": "cylinder",
+            "comment": "Red Sphere",
+	    "pos1": [90, 320, 100],
+	    "pos2": [210, 270, 300],
+            "radius": 60,
+            "material": {
+                "color": [1.0, 0.0, 0.0],
+                "ka": 0.2,
+                "kd": 0.7,
+                "ks": 0.8,
+                "n": 32
+            }
+        }
+    ]
+}
