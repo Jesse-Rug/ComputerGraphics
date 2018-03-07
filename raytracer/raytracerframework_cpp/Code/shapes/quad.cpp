@@ -20,3 +20,8 @@ Quad::Quad(Point p1, Point p2, Point p3, Point p4)
     t1 = Triangle(s[0], s[1], s[3]);
     t2 = Triangle(s[0], s[2], s[3]);
 }
+
+Vector Quad::getTextureCoord(Point hit)
+{
+    return Vector(0, 0, 0);
+}

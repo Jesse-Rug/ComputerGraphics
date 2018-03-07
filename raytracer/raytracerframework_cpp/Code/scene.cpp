@@ -30,6 +30,14 @@ Color Scene::trace(Ray const &ray)
 
     Material material = obj->material;          //the hit objects material
     Point hit = ray.at(min_hit.t);                 //the hit point
+
+    Color color;
+    if (material.hasTexture){
+        Vector uvq = obj->getTextureCoord(hit);
+	color = material.color(uvq.x, uvq.y);
+    } else 
+	color = material.color(0, 0);
+
     Vector N = min_hit.N;                          //the normal at hit point
     Vector V = -ray.D;                             //the view vector
     Vector L = lights[0]->position.operator-(hit);

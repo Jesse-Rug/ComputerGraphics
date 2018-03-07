@@ -82,3 +82,8 @@ Cylinder::Cylinder(Point const &pos, Point const &pos2, double height, double ra
     rad(radius),
     h(height)
 {}
+
+Vector Sphere::getTextureCoord(Point hit)
+{
+    return Vector(0, 0, 0);
+}

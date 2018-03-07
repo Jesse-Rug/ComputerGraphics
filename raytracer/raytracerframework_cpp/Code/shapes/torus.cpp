@@ -63,3 +63,8 @@ Torus::Torus(/* YOUR DATAMEMBERS HERE */)
 //:
 // See sphere.cpp how to initialize your data members
 {}
+
+Vector Torus::getTextureCoord(Point hit)
+{
+    return Vector(0, 0, 0);
+}
