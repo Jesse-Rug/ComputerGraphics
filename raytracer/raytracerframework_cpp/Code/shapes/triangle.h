@@ -1,26 +1,21 @@
-//
-//  triangle.h
-//  
-//
-//  Created by Paola Del Hierro on 2/24/18.
-//
-
-#ifndef triangle_h
-#define triangle_h
+#ifndef TRIANGLE_H_
+#define TRIANGLE_H_
 
 #include "../object.h"
-class Triangle: public Object{
-    
-public:
-    Triangle (Point const &p1, Point const &p2, Point const &p3);
-    
-    virtual Hit intersect(Ray const &ray);
-    
-    Point pos1, pos2, pos3;
 
-    Triangle &operator=(Triangle &&t1);
+class Triangle: public Object
+{
+    public:
+        Triangle(Point const &v0,
+                 Point const &v1,
+                 Point const &v2);
 
+        virtual Hit intersect(Ray const &ray);
+
+        Point v0;
+        Point v1;
+        Point v2;
+        Vector N;
 };
 
-
-#endif /* triangle_h */
+#endif

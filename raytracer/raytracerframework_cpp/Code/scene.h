@@ -29,6 +29,7 @@ class Scene
         void addObject(ObjectPtr obj);
         void addLight(Light const &light);
         void setEye(Triple const &position);
+        bool lightInt(Ray ray);
 
         unsigned getNumObject();
         unsigned getNumLights();

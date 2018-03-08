@@ -30,9 +30,9 @@ Color Scene::trace(Ray const &ray)
 
     Material material = obj->material;          //the hit objects material
     Point hit = ray.at(min_hit.t);                 //the hit point
-    Vector N = min_hit.N;                          //the normal at hit point
+    Vector N = min_hit.N.normalized();                          //the normal at hit point
     Vector V = -ray.D;                             //the view vector
-    Vector L = lights[0]->position.operator-(hit);
+    Vector L = lights[0]->position-hit;
     L.normalize();
     Vector R = 2*(N.dot(L))*N - L;
 
@@ -55,6 +55,10 @@ Color Scene::trace(Ray const &ray)
     ****************************************************/
 
     Color ambient = material.color * material.ka;
+    
+
+    if (lightInt( Ray( Point(hit - 0.000001 * L), (-1)*L)))
+        return ambient;
     double  lamb = N.dot(L);
     lamb = (lamb<0) ? lamb:0;
     Color lambert =  -1*lamb* material.color*material.kd;
