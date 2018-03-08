@@ -1,10 +1,12 @@
 #include "image.h"
 
 #include "lode/lodepng.h"
+#include "json/json.h"
 #include <iostream>
 #include <fstream>
 
 using namespace std;
+using json = nlohmann::json;
 
 Image::Image(unsigned width, unsigned height)
 :
@@ -17,6 +19,15 @@ Image::Image(string const &filename)
 {
     read_png(filename);
 }
+
+Image::Image(json const &node)
+{
+    if (!node.is_string())
+        throw runtime_error("Image(): JSON node is not a string");
+
+    read_png(node);
+}
+
 
 // normal accessors
 void Image::put_pixel(unsigned x, unsigned y, Color const &c)

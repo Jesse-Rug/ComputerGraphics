@@ -9,6 +9,7 @@ class Mesh
         Mesh(std::string const &filename);
 
         virtual Hit intersect(Ray const &ray);
+	virtual Vector getTextureCoord(Point point);
 
         std::vector<Triangle> triangles;
 };

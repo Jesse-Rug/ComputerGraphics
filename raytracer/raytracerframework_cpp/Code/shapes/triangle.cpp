@@ -52,3 +52,11 @@ Triangle::Triangle(Point const &v0,
     N = U.cross(V);
     N.normalize();
 }
+<<<<<<< HEAD
+=======
+
+Vector Triangle::getTextureCoord(Point hit)
+{
+    return Vector(0, 0, 0);
+}
+>>>>>>> tempo

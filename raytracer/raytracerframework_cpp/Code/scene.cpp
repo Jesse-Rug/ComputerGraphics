@@ -29,11 +29,16 @@ Color Scene::trace(Ray const &ray)
     if (!obj) return Color(0.0, 0.0, 0.0);
 
     Material material = obj->material;          //the hit objects material
-    Point hit = ray.at(min_hit.t);  //the hit point
-    
-    
-    
-    Vector N = min_hit.N.normalized();                          //the normal at hit point
+    Point hit = ray.at(min_hit.t);                 //the hit point
+
+    Color color;
+    if (material.hasTexture){
+        Vector uvq = obj->getTextureCoord(hit);
+	color = material.getColor(uvq.x, uvq.y);
+    } else 
+	color = material.getColor(0, 0);
+
+    Vector N = min_hit.N.normalized;                          //the normal at hit point
     Vector V = -ray.D;                             //the view vector
     Vector L = lights[0]->position-hit;
     L.normalize();
@@ -57,7 +62,7 @@ Color Scene::trace(Ray const &ray)
     *        pow(a,b)           a to the power of b
     ****************************************************/
 
-    Color ambient = material.color * material.ka;
+    Color ambient = color * material.ka;
     
 
    if (lightInt( Ray( Point(hit - 0.000001 * L), (-1)*L)))
@@ -65,7 +70,7 @@ Color Scene::trace(Ray const &ray)
     
     double  lamb = N.dot(L);
     lamb = (lamb<0) ? lamb:0;
-    Color lambert =  -1*lamb* material.color*material.kd;
+    Color lambert =  -1 * lamb * color * material.kd;
     R.normalize();
     double reflection = V.dot(R);
     reflection = (reflection<0) ? 0: reflection;
@@ -73,7 +78,7 @@ Color Scene::trace(Ray const &ray)
     Color ref = reflection * lights[0]->color;
     //lambert = lambert* lights[0]->color;
 
-    Color color = ambient + lambert + ref;
+    color = ambient + lambert + ref;
     //Color color = material.color;                  // place holder
     /*Color color;
     color.set(N.dot(ray.D)); */

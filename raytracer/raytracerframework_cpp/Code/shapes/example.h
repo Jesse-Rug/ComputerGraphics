@@ -9,6 +9,7 @@ class Example: public Object
         Example(/* YOUR DATA MEMBERS HERE*/);
 
         virtual Hit intersect(Ray const &ray);
+	virtual Vector getTextureCoord(Point point);
 
         /* YOUR DATA MEMBERS HERE*/
 };

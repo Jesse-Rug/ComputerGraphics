@@ -36,3 +36,8 @@ Mesh::Mesh(std::string const &filename)
 	triangles.at(index) = Triangle(p1, p2, p3);
     }
 }
+
+Vector Mesh::getTextureCoord(Point hit)
+{
+    return Vector(0, 0, 0);
+}

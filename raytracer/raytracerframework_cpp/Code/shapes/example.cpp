@@ -16,3 +16,8 @@ Example::Example(/* YOUR DATAMEMBERS HERE */)
 //:
 // See sphere.cpp how to initialize your data members
 {}
+
+Vector Example::getTextureCoord(Point hit)
+{
+    return Vector(0, 0, 0);
+}

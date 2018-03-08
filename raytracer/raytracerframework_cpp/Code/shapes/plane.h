@@ -12,6 +12,7 @@ class Plane: public Object
         Plane(Point point0, Point point1, Point point2);
 
         virtual Hit intersect(Ray const &ray);
+	virtual Vector getTextureCoord(Point point);
 
         Point const d_loc0;
         Vector  d_normal;

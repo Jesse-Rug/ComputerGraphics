@@ -10,6 +10,7 @@ class Quad: public Object
         Quad(Point p1, Point p2, Point p3, Point p4);
 
         virtual Hit intersect(Ray const &ray);
+	virtual Vector getTextureCoord(Point point);
 
         Triangle t1, t2;
 };

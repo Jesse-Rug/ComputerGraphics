@@ -11,6 +11,7 @@ class Triangle: public Object
                  Point const &v2);
 
         virtual Hit intersect(Ray const &ray);
+        virtual Vector getTextureCoord(Point point);
 
         Point v0;
         Point v1;

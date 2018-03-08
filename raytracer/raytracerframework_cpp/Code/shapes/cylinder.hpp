@@ -17,6 +17,7 @@ public:
     Cylinder(Point const &pos, Point const &pos2, double height, double radius);
     
     virtual Hit intersect(Ray const &ray);
+    virtual Vector getTextureCoord(Point point);
     
     Point const position, positionT;
     double const rad, h;

@@ -36,3 +36,8 @@ Plane::Plane(Point point0, Vector normal)
     d_loc0(point0),
     d_normal(normal)
 {}
+
+Vector Plane::getTextureCoord(Point hit)
+{
+    return Vector(0, 0, 0);
+}

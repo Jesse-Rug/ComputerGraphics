@@ -2,6 +2,7 @@
 #define IMAGE_H_
 
 #include "triple.h"
+#include "json/json.h"
 
 #include <string>
 #include <vector>
@@ -15,6 +16,7 @@ class Image
     public:
         Image(unsigned width = 0, unsigned height = 0);
         Image(std::string const &filename);
+        Image(nlohmann::json const &node);    // json -> Image
 
         // normal accessors
         void put_pixel(unsigned x, unsigned y, Color const &c);
