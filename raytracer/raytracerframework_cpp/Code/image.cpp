@@ -26,6 +26,7 @@ Image::Image(json const &node)
         throw runtime_error("Image(): JSON node is not a string");
 
     read_png(node);
+    cerr << size();
 }
 
 
@@ -91,6 +92,7 @@ void Image::write_png(std::string const &filename) const
 void Image::read_png(std::string const &filename)
 {
     vector<unsigned char> image;
+    cerr << filename;
     lodepng::decode(image, d_width, d_height, filename);
     d_pixels.reserve(size());
 

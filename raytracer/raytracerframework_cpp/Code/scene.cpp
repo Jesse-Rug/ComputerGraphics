@@ -7,6 +7,7 @@
 
 #include <cmath>
 #include <limits>
+#include <iostream>
 
 using namespace std;
 
@@ -24,6 +25,7 @@ Color Scene::trace(Ray const &ray)
             obj = objects[idx];
         }
     }
+    
 
     // No hit? Return background color.
     if (!obj) return Color(0.0, 0.0, 0.0);
@@ -38,7 +40,7 @@ Color Scene::trace(Ray const &ray)
     } else 
 	color = material.getColor(0, 0);
 
-    Vector N = min_hit.N.normalized;                          //the normal at hit point
+    Vector N = min_hit.N.normalized();              //the normal at hit point
     Vector V = -ray.D;                             //the view vector
     Vector L = lights[0]->position-hit;
     L.normalize();
@@ -65,8 +67,8 @@ Color Scene::trace(Ray const &ray)
     Color ambient = color * material.ka;
     
 
-   if (lightInt( Ray( Point(hit - 0.000001 * L), (-1)*L)))
-        return ambient;
+   //if (lightInt( Ray( Point(hit - 0.000001 * L), (-1)*L)))
+     //   return ambient;
     
     double  lamb = N.dot(L);
     lamb = (lamb<0) ? lamb:0;
@@ -96,7 +98,7 @@ void Scene::render(Image &img)
     {
         for (unsigned x = 0; x < w; ++x)
         {
-            Color col(0,0,0);
+/*            Color col(0,0,0);
             Point pixel[4]; //(x + 0.5, h - 1 - y + 0.5, 0);
             pixel[0] = Point(x + .25, h - 1 - y + 0.25 ,0);
             pixel[1] = Point(x + .25, h - 1 - y + 0.75 ,0);
@@ -106,7 +108,10 @@ void Scene::render(Image &img)
                 Ray ray(eye, (pixel[i] - eye).normalized());
                 col += trace(ray);
             }
-            col /= 4;
+            col /= 4; */
+ 	    Point pixel(x + 0.5, h - 1 - y + 0.5, 0);
+            Ray ray(eye, (pixel - eye).normalized());
+            Color col = trace(ray);
             col.clamp();
             img(x, y) = col;
         }

@@ -38,9 +38,18 @@ bool Raytracer::parseObjectNode(json const &node)
 
     if (node["type"] == "sphere")
     {
-        Point pos(node["position"]);
-        double radius = node["radius"];
-        obj = ObjectPtr(new Sphere(pos, radius));
+        if (node.size() == 7){
+	    // regular have 5
+            Point pos(node["position"]);
+            double radius = node["radius"];
+            Vector axis(node["rotation"]);
+	    double angle = node["angle"];
+            obj = ObjectPtr(new Sphere(pos, radius, axis, angle));
+        } else {
+            Point pos(node["position"]);
+            double radius = node["radius"];
+            obj = ObjectPtr(new Sphere(pos, radius));
+        }
     } 
     else if (node["type"] == "triangle")
     {
@@ -88,6 +97,10 @@ bool Raytracer::parseObjectNode(json const &node)
 
     if (!obj)
         return false;
+
+    //this prevents a std::bad_alloc. somehow
+    cerr << " parsed \n";
+
 
     // Parse material and add object to the scene
     obj->material = parseMaterialNode(node["material"]);

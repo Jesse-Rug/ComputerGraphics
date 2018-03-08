@@ -1,6 +1,7 @@
 #include "sphere.h"
 
 #include <cmath>
+#include <iostream>
 
 using namespace std;
 
@@ -96,17 +97,21 @@ Sphere::Sphere(Point const &pos, double radius, Vector const &rotation, double a
 
 Vector Sphere::getTextureCoord(Point hit)
 {
-   Point point(hit - position);
+   Point point((hit - position).normalized());
    double pi = 3.14159265359;
-   point /= r;
    Point normal;
    normal.x = point.dot(rotMatrix[0]);
    normal.y = point.dot(rotMatrix[1]);
-   normal.z = point.dot(rotMatrix[2]);
-   //normal is now a point on a unit sphere, pointing up, centered around the origin
+   normal.z = point.dot(rotMatrix[2]); 
+   normal.normalize();
+   //normal is now a point on a unit sphere that points up(ish), centered around the origin
 
-   double u = atan2(normal.x, normal.z) / (2 * pi) + 0.5;
-   double v = normal.y;  
-   // std::atan2 returns on the range of [-PI, PI], dividing by 2PI mapping to [-.5, .5] and finally to [0,1] 
+   double u = atan2(normal.x , normal.z) /  (2* pi) + 0.5 + (angle * pi / 180);
+   for(; u > 1.0; u -= 1.0 );  //while (u > 1.0) u -= 1.0;  
+   double v = (normal.y / 2) + 0.5; 
+// std::atan2 returns on the range of [-PI, PI], dividing by 2 PI mapping to [-.5, .5] and finally to [0,1]
+//the final part adds the angle disposition 
    return Vector(u, v, 0);
+   //double u = atan2(point.x, point.z) / (2 * pi) + 0.5;
+   //return Vector(u, (point.y / 2) + 0.5, 0);
 }
