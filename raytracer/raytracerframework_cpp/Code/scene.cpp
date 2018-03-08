@@ -29,7 +29,10 @@ Color Scene::trace(Ray const &ray)
     if (!obj) return Color(0.0, 0.0, 0.0);
 
     Material material = obj->material;          //the hit objects material
-    Point hit = ray.at(min_hit.t);                 //the hit point
+    Point hit = ray.at(min_hit.t);  //the hit point
+    
+    
+    
     Vector N = min_hit.N.normalized();                          //the normal at hit point
     Vector V = -ray.D;                             //the view vector
     Vector L = lights[0]->position-hit;
@@ -57,8 +60,9 @@ Color Scene::trace(Ray const &ray)
     Color ambient = material.color * material.ka;
     
 
-    if (lightInt( Ray( Point(hit - 0.000001 * L), (-1)*L)))
+   if (lightInt( Ray( Point(hit - 0.000001 * L), (-1)*L)))
         return ambient;
+    
     double  lamb = N.dot(L);
     lamb = (lamb<0) ? lamb:0;
     Color lambert =  -1*lamb* material.color*material.kd;
@@ -66,7 +70,7 @@ Color Scene::trace(Ray const &ray)
     double reflection = V.dot(R);
     reflection = (reflection<0) ? 0: reflection;
     reflection = material.ks * pow(reflection, material.n);
-    Color ref = reflection*material.color; //*lights[0]->color;
+    Color ref = reflection * lights[0]->color;
     //lambert = lambert* lights[0]->color;
 
     Color color = ambient + lambert + ref;
@@ -87,9 +91,17 @@ void Scene::render(Image &img)
     {
         for (unsigned x = 0; x < w; ++x)
         {
-            Point pixel(x + 0.5, h - 1 - y + 0.5, 0);
-            Ray ray(eye, (pixel - eye).normalized());
-            Color col = trace(ray);
+            Color col(0,0,0);
+            Point pixel[4]; //(x + 0.5, h - 1 - y + 0.5, 0);
+            pixel[0] = Point(x + .25, h - 1 - y + 0.25 ,0);
+            pixel[1] = Point(x + .25, h - 1 - y + 0.75 ,0);
+            pixel[2] = Point(x + .75, h - 1 - y + 0.25 ,0);
+            pixel[3] = Point(x + .75, h - 1 - y + 0.75 ,0);
+            for(int i=0; i<4; i++){
+                Ray ray(eye, (pixel[i] - eye).normalized());
+                col += trace(ray);
+            }
+            col /= 4;
             col.clamp();
             img(x, y) = col;
         }
