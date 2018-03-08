@@ -136,3 +136,7 @@ Triangle &Triangle::operator=(Triangle &&t1)
 	return *this;
 }
 
+Vector Triangle::getTextureCoord(Point hit)
+{
+    return Vector(0, 0, 0);
+}

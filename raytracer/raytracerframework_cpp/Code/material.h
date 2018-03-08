@@ -2,6 +2,7 @@
 #define MATERIAL_H_
 
 #include "triple.h"
+#include "image.h"
 
 class Material
 {
@@ -17,11 +18,12 @@ class Material
 
         Material() = default;
 
-	Color color(u, v){
-            if (!hasTexture)
-		return (color);
-	    return texture.colorAt(u, v);
-	}
+	Color getColor(float u, float v)
+        {
+    	    if (!hasTexture)
+	        return (color);
+             return texture.colorAt(u, v);
+        }
 
         Material(Color const &color, double ka, double kd, double ks, double n)
         :

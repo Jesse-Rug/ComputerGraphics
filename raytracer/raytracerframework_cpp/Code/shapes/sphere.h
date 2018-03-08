@@ -7,7 +7,7 @@ class Sphere: public Object
 {
     public:
         Sphere(Point const &pos, double radius);
-        Sphere::Sphere(Point const &pos, double radius, Vector const &rotation, double angle);
+        Sphere(Point const &pos, double radius, Vector const &rotation, double angle);
 
 
         virtual Hit intersect(Ray const &ray);

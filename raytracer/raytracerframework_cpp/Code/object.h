@@ -2,6 +2,7 @@
 #define OBJECT_H_
 
 #include "material.h"
+#include "image.h"
 
 // not really needed here, but deriving classes may need them
 #include "hit.h"

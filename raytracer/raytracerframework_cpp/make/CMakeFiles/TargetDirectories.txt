@@ -1,0 +1,1 @@
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/make/CMakeFiles/ray.dir

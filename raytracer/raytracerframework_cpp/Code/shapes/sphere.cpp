@@ -57,7 +57,9 @@ Hit Sphere::intersect(Ray const &ray)
 Sphere::Sphere(Point const &pos, double radius)
 :
     position(pos),
-    r(radius)
+    r(radius),
+    axis( Vector(0, 1, 0)),
+    angle(0.0)
 {}
 
 Sphere::Sphere(Point const &pos, double radius, Vector const &rotation, double angle)
@@ -69,7 +71,7 @@ Sphere::Sphere(Point const &pos, double radius, Vector const &rotation, double a
 {
     Vector rAxis = rotation.normalized().cross(Vector(0, 1, 0));
     double cos = rotation.normalized().dot(Vector(0, 1, 0));
-    double angle = std::acos(cos);
+    double theta = std::acos(cos);
 
     Vector S0(0, -rAxis.z, rAxis.y);
     Vector S1(rAxis.z, 0, -rAxis.x);
@@ -83,14 +85,14 @@ Sphere::Sphere(Point const &pos, double radius, Vector const &rotation, double a
     Vector Ssq1(S1.dot(ST0), S1.dot(ST1), S1.dot(ST2));
     Vector Ssq2(S2.dot(ST0), S2.dot(ST1), S2.dot(ST2));
 
-    rotMatrix[0] = Vector(1, 0, 0) + (S0 * angle) + (Ssq0 * (1 - cos));
-    rotMatrix[1] = Vector(0, 1, 0) + (S1 * angle) + (Ssq1 * (1 - cos));
-    rotMatrix[2] = Vector(0, 0, 1) + (S2 * angle) + (Ssq2 * (1 - cos));
+    rotMatrix[0] = Vector(1, 0, 0) + (S0 * theta) + (Ssq0 * (1 - cos));
+    rotMatrix[1] = Vector(0, 1, 0) + (S1 * theta) + (Ssq1 * (1 - cos));
+    rotMatrix[2] = Vector(0, 0, 1) + (S2 * theta) + (Ssq2 * (1 - cos));
 
 
 }
 
-https://www.gamedev.net/forums/topic/61727-aligning-two-vectors/
+//https://www.gamedev.net/forums/topic/61727-aligning-two-vectors/
 
 Vector Sphere::getTextureCoord(Point hit)
 {
@@ -103,8 +105,8 @@ Vector Sphere::getTextureCoord(Point hit)
    normal.z = point.dot(rotMatrix[2]);
    //normal is now a point on a unit sphere, pointing up, centered around the origin
 
-   u = atan2(n.x, n.z) / (2 * pi) + 0.5;
-   v = n.y;  
+   double u = atan2(normal.x, normal.z) / (2 * pi) + 0.5;
+   double v = normal.y;  
    // std::atan2 returns on the range of [-PI, PI], dividing by 2PI mapping to [-.5, .5] and finally to [0,1] 
    return Vector(u, v, 0);
 }

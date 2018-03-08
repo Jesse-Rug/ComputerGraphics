@@ -34,9 +34,9 @@ Color Scene::trace(Ray const &ray)
     Color color;
     if (material.hasTexture){
         Vector uvq = obj->getTextureCoord(hit);
-	color = material.color(uvq.x, uvq.y);
+	color = material.getColor(uvq.x, uvq.y);
     } else 
-	color = material.color(0, 0);
+	color = material.getColor(0, 0);
 
     Vector N = min_hit.N;                          //the normal at hit point
     Vector V = -ray.D;                             //the view vector
@@ -62,18 +62,18 @@ Color Scene::trace(Ray const &ray)
     *        pow(a,b)           a to the power of b
     ****************************************************/
 
-    Color ambient = material.color * material.ka;
+    Color ambient = color * material.ka;
     double  lamb = N.dot(L);
     lamb = (lamb<0) ? lamb:0;
-    Color lambert =  -1*lamb* material.color*material.kd;
+    Color lambert =  -1 * lamb * color * material.kd;
     R.normalize();
     double reflection = V.dot(R);
     reflection = (reflection<0) ? 0: reflection;
     reflection = material.ks * pow(reflection, material.n);
-    Color ref = reflection*material.color; //*lights[0]->color;
+    Color ref = reflection * color; //*lights[0]->color;
     //lambert = lambert* lights[0]->color;
 
-    Color color = ambient + lambert + ref;
+    color = ambient + lambert + ref;
     //Color color = material.color;                  // place holder
     /*Color color;
     color.set(N.dot(ray.D)); */
