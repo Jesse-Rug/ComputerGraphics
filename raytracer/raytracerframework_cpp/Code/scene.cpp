@@ -106,7 +106,7 @@ void Scene::render(Image &img)
                     
                 }
             }
-            col=col/pow(2,ss);
+            col=col/pow(ss,2);
             col.clamp();
             img(x, y) = col;
         }
