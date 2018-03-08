@@ -133,6 +133,11 @@ try
 
     Point eye(jsonscene["Eye"]);
     scene.setEye(eye);
+    
+    if(!jsonscene["SuperSamplingFactor"].is_null())
+        scene.enableSS(jsonscene["SuperSamplingFactor"]);
+    else
+        scene.enableSS(1);
 
     // TODO: add your other configuration settings here
 
@@ -163,7 +168,6 @@ void Raytracer::renderToFile(string const &ofname)
     // TODO: the size may be a settings in your file
     Image img(400, 400);
     cout << "Tracing...\n";
-    scene.enableSS(4);
     scene.render(img);
     cout << "Writing image to " << ofname << "...\n";
     img.write_png(ofname);
