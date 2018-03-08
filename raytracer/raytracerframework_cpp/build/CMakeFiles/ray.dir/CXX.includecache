@@ -17,6 +17,8 @@ image.h
 /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/image.h
 lode/lodepng.h
 /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/lode/lodepng.h
+json/json.h
+/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json.h
 iostream
 -
 fstream
@@ -25,6 +27,8 @@ fstream
 /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/image.h
 triple.h
 /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/triple.h
+json/json.h
+/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json.h
 string
 -
 vector
@@ -355,10 +359,14 @@ string
 /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/material.h
 triple.h
 /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/triple.h
+image.h
+/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/image.h
 
 /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/object.h
 material.h
 /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/material.h
+image.h
+/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/image.h
 hit.h
 /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/hit.h
 ray.h

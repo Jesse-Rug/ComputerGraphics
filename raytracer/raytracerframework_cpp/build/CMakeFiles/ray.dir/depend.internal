@@ -4,12 +4,15 @@
 CMakeFiles/ray.dir/Code/image.cpp.o
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/image.cpp
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/image.h
+ /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json_fwd.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/lode/lodepng.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/triple.h
 CMakeFiles/ray.dir/Code/intersectLight.cpp.o
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/hit.h
+ /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/image.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/intersectLight.cpp
+ /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json_fwd.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/light.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/material.h
@@ -22,6 +25,8 @@ CMakeFiles/ray.dir/Code/lode/lodepng.cpp.o
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/lode/lodepng.h
 CMakeFiles/ray.dir/Code/main.cpp.o
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/hit.h
+ /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/image.h
+ /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json_fwd.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/light.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/main.cpp
@@ -56,6 +61,7 @@ CMakeFiles/ray.dir/Code/raytracer.cpp.o
 CMakeFiles/ray.dir/Code/scene.cpp.o
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/hit.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/image.h
+ /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json_fwd.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/light.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/material.h
@@ -66,6 +72,8 @@ CMakeFiles/ray.dir/Code/scene.cpp.o
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/triple.h
 CMakeFiles/ray.dir/Code/shapes/cylinder.cpp.o
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/hit.h
+ /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/image.h
+ /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json_fwd.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/material.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/object.h
@@ -75,6 +83,8 @@ CMakeFiles/ray.dir/Code/shapes/cylinder.cpp.o
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/triple.h
 CMakeFiles/ray.dir/Code/shapes/example.cpp.o
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/hit.h
+ /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/image.h
+ /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json_fwd.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/material.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/object.h
@@ -84,6 +94,8 @@ CMakeFiles/ray.dir/Code/shapes/example.cpp.o
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/triple.h
 CMakeFiles/ray.dir/Code/shapes/mesh.cpp.o
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/hit.h
+ /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/image.h
+ /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json_fwd.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/material.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/object.h
@@ -96,6 +108,8 @@ CMakeFiles/ray.dir/Code/shapes/mesh.cpp.o
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/vertex.h
 CMakeFiles/ray.dir/Code/shapes/plane.cpp.o
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/hit.h
+ /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/image.h
+ /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json_fwd.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/material.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/object.h
@@ -105,6 +119,8 @@ CMakeFiles/ray.dir/Code/shapes/plane.cpp.o
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/triple.h
 CMakeFiles/ray.dir/Code/shapes/quad.cpp.o
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/hit.h
+ /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/image.h
+ /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json_fwd.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/material.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/object.h
@@ -118,6 +134,8 @@ CMakeFiles/ray.dir/Code/shapes/solvers.cpp.o
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/solvers.h
 CMakeFiles/ray.dir/Code/shapes/sphere.cpp.o
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/hit.h
+ /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/image.h
+ /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json_fwd.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/material.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/object.h
@@ -127,6 +145,8 @@ CMakeFiles/ray.dir/Code/shapes/sphere.cpp.o
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/triple.h
 CMakeFiles/ray.dir/Code/shapes/torus.cpp.o
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/hit.h
+ /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/image.h
+ /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json_fwd.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/material.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/object.h
@@ -136,6 +156,8 @@ CMakeFiles/ray.dir/Code/shapes/torus.cpp.o
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/triple.h
 CMakeFiles/ray.dir/Code/shapes/triangle.cpp.o
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/hit.h
+ /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/image.h
+ /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json_fwd.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/material.h
  /Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/object.h

@@ -163,6 +163,7 @@ void Raytracer::renderToFile(string const &ofname)
     // TODO: the size may be a settings in your file
     Image img(400, 400);
     cout << "Tracing...\n";
+    scene.enableSS(4);
     scene.render(img);
     cout << "Writing image to " << ofname << "...\n";
     img.write_png(ofname);

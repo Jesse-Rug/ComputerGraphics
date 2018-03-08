@@ -38,7 +38,7 @@ Color Scene::trace(Ray const &ray)
     } else 
 	color = material.getColor(0, 0);
 
-    Vector N = min_hit.N.normalized;                          //the normal at hit point
+    Vector N = min_hit.N.normalized();                          //the normal at hit point
     Vector V = -ray.D;                             //the view vector
     Vector L = lights[0]->position-hit;
     L.normalize();
@@ -65,9 +65,9 @@ Color Scene::trace(Ray const &ray)
     Color ambient = color * material.ka;
     
 
-   if (lightInt( Ray( Point(hit - 0.000001 * L), (-1)*L)))
+   /*if (lightInt( Ray( Point(hit - 0.000001 * L), (-1)*L)))
         return ambient;
-    
+    */
     double  lamb = N.dot(L);
     lamb = (lamb<0) ? lamb:0;
     Color lambert =  -1 * lamb * color * material.kd;
@@ -96,17 +96,17 @@ void Scene::render(Image &img)
     {
         for (unsigned x = 0; x < w; ++x)
         {
-            Color col(0,0,0);
-            Point pixel[4]; //(x + 0.5, h - 1 - y + 0.5, 0);
-            pixel[0] = Point(x + .25, h - 1 - y + 0.25 ,0);
-            pixel[1] = Point(x + .25, h - 1 - y + 0.75 ,0);
-            pixel[2] = Point(x + .75, h - 1 - y + 0.25 ,0);
-            pixel[3] = Point(x + .75, h - 1 - y + 0.75 ,0);
-            for(int i=0; i<4; i++){
-                Ray ray(eye, (pixel[i] - eye).normalized());
-                col += trace(ray);
+            Color col;
+            Point pixel;
+            for(int i=0; i<ss; i++){
+                for(int j=0; j<ss; j++){
+                    pixel = Point(x + ((2*i + 1)/ss), h - 1 - y + ((2*j + 1)/ss),0);
+                    Ray ray(eye, (pixel - eye).normalized());
+                    col += trace(ray);
+                    
+                }
             }
-            col /= 4;
+            col=col/pow(2,ss);
             col.clamp();
             img(x, y) = col;
         }
@@ -128,6 +128,10 @@ void Scene::addLight(Light const &light)
 void Scene::setEye(Triple const &position)
 {
     eye = position;
+}
+
+void Scene::enableSS(int const &rays){
+    ss = rays;
 }
 
 unsigned Scene::getNumObject()
