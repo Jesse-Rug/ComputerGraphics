@@ -57,3 +57,5 @@ Vector Triangle::getTextureCoord(Point hit)
 {
     return Vector(0, 0, 0);
 }
+
+

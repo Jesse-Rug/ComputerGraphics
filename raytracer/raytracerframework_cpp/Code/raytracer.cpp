@@ -146,6 +146,11 @@ try
 
     Point eye(jsonscene["Eye"]);
     scene.setEye(eye);
+    
+    if(!jsonscene["SuperSamplingFactor"].is_null())
+        scene.enableSS(jsonscene["SuperSamplingFactor"]);
+    else
+        scene.enableSS(1);
 
     // TODO: add your other configuration settings here
 

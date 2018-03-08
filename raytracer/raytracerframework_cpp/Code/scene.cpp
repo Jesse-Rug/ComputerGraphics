@@ -40,6 +40,7 @@ Color Scene::trace(Ray const &ray)
     } else 
 	color = material.getColor(0, 0);
 
+
     Vector N = min_hit.N.normalized();              //the normal at hit point
     Vector V = -ray.D;                             //the view vector
     Vector L = lights[0]->position-hit;
@@ -67,9 +68,10 @@ Color Scene::trace(Ray const &ray)
     Color ambient = color * material.ka;
     
 
-   //if (lightInt( Ray( Point(hit - 0.000001 * L), (-1)*L)))
-     //   return ambient;
-    
+   /*if (lightInt( Ray( Point(hit - 0.000001 * L), (-1)*L)))
+        return ambient;
+    */
+
     double  lamb = N.dot(L);
     lamb = (lamb<0) ? lamb:0;
     Color lambert =  -1 * lamb * color * material.kd;
@@ -107,11 +109,23 @@ void Scene::render(Image &img)
             for(int i=0; i<4; i++){
                 Ray ray(eye, (pixel[i] - eye).normalized());
                 col += trace(ray);
-            }
-            col /= 4; */
+            } ///
+            col /= 4; 
  	    Point pixel(x + 0.5, h - 1 - y + 0.5, 0);
             Ray ray(eye, (pixel - eye).normalized());
-            Color col = trace(ray);
+            Color col = trace(ray); */
+
+            Color col;
+            Point pixel;
+            for(int i=0; i<ss; i++){
+                for(int j=0; j<ss; j++){
+                    pixel = Point(x + ((2*i + 1)/ss), h - 1 - y + ((2*j + 1)/ss),0);
+                    Ray ray(eye, (pixel - eye).normalized());
+                    col += trace(ray);
+                    
+                }
+            }
+            col=col/pow(ss,2);
             col.clamp();
             img(x, y) = col;
         }
@@ -133,6 +147,10 @@ void Scene::addLight(Light const &light)
 void Scene::setEye(Triple const &position)
 {
     eye = position;
+}
+
+void Scene::enableSS(int const &rays){
+    ss = rays;
 }
 
 unsigned Scene::getNumObject()
