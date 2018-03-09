@@ -85,5 +85,20 @@ Cylinder::Cylinder(Point const &pos, Point const &pos2, double height, double ra
 
 Vector Cylinder::getTextureCoord(Point hit)
 {
-    return Vector(0, 0, 0);
+   Point point((hit - position).normalized());
+   double pi = 3.14159265359;
+   Point normal;
+   normal.x = point.dot(rotMatrix[0]);
+   normal.y = point.dot(rotMatrix[1]);
+   normal.z = point.dot(rotMatrix[2]); 
+   normal.normalize();
+   //normal is now a point on a unit sphere that points up(ish), centered around the origin
+
+   double u = atan2(normal.x , normal.z) /  (2* pi) + 0.5; // + (angle * pi / 180);
+   for(; u > 1.0; u -= 1.0 );  //while (u > 1.0) u -= 1.0;  
+   double v = (-normal.y / 2) + 0.5; 
+// std::atan2 returns on the range of [-PI, PI], dividing by 2 PI mapping to [-.5, .5] and finally to [0,1]
+//the final part adds the angle disposition 
+// minus normal.y to make coordinate systems line up.
+   return Vector(u, v, 0);
 }

@@ -21,6 +21,7 @@ public:
     
     Point const position, positionT;
     double const rad, h;
+    Vector rotMatrix[3];
     
 };
 

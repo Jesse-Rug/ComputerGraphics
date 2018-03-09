@@ -107,12 +107,10 @@ Vector Sphere::getTextureCoord(Point hit)
    //normal is now a point on a unit sphere that points up(ish), centered around the origin
 
    double u = atan2(normal.x , normal.z) /  (2* pi) + 0.5 + (angle * pi / 180);
-   for(; u > 1.0; u -= 1.0 );  //while (u > 1.0) u -= 1.0;  
-   double v = (-normal.y / 2) + 0.5; 
-// std::atan2 returns on the range of [-PI, PI], dividing by 2 PI mapping to [-.5, .5] and finally to [0,1]
-//the final part adds the angle disposition 
-// minus normal.y to make coordinate systems line up.
+   for(; u > 1.0; u -= 1.0 );  // or while (u > 1.0) u -= 1.0;  
+   double v = 0.5 - (asin(normal.y) / pi);
+   // std::atan2 returns on the range of [-PI, PI], dividing by 2 PI mapping to [-.5, .5] and finally to [0,1]
+   // the final part adds the angle disposition 
+   // https://en.wikipedia.org/wiki/UV_mapping
    return Vector(u, v, 0);
-   //double u = atan2(point.x, point.z) / (2 * pi) + 0.5;
-   //return Vector(u, (point.y / 2) + 0.5, 0);
 }
