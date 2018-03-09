@@ -30,28 +30,22 @@ Color Scene::trace(Ray const &ray)
     // No hit? Return background color.
     if (!obj) return Color(0.0, 0.0, 0.0);
 
+    Material material obj->material;          //the hit objects material
     Point hit = ray.at(min_hit.t);                 //the hit point
+
+    Color color;
+    if (material.hasTexture){
+        Vector uvq = obj->getTextureCoord(hit);
+	color = material.getColor(uvq.x, uvq.y);
+    } else 
+	color = material.getColor(0, 0);
+
+
     Vector N = min_hit.N.normalized();              //the normal at hit point
     Vector V = -ray.D;                             //the view vector
     Vector L = lights[0]->position-hit;
     L.normalize();
     Vector R = 2*(N.dot(L))*N - L;
-
-    Material material;                  //the hit objects material without the texture/color
-    material.ka = obj->material.ka; 
-    material.kd = obj->material.kd;
-    material.ks = obj->material.ks;
-    material.n  = obj->material.n;
-
-    Color color;
-    if (obj->material.hasTexture){
-        Vector uvq = obj->getTextureCoord(hit);
-	color = obj->material.getColor(uvq.x, uvq.y);
-    } else 
-	color = obj->material.getColor(0, 0);
-
-
-
 
     /****************************************************
     * This is where you should insert the color
