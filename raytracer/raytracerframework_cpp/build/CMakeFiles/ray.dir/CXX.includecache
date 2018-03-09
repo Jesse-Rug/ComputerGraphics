@@ -12,18 +12,6 @@ triple.h
 limits
 -
 
-/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/image.cpp
-image.h
-/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/image.h
-lode/lodepng.h
-/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/lode/lodepng.h
-json/json.h
-/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/json/json.h
-iostream
--
-fstream
--
-
 /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/image.h
 triple.h
 /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/triple.h
@@ -324,30 +312,6 @@ triple.h
 memory
 -
 
-/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/lode/lodepng.cpp
-lodepng.h
-/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/lode/lodepng.h
-limits.h
--
-stdio.h
--
-stdlib.h
--
-
-/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/lode/lodepng.h
-string.h
--
-vector
--
-string
--
-lodepng.h
-/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/lode/lodepng.h
-iostream
--
-lodepng.h
-/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/lode/lodepng.h
-
 /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/main.cpp
 raytracer.h
 /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/raytracer.h
@@ -374,16 +338,6 @@ ray.h
 triple.h
 /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/triple.h
 memory
--
-
-/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/objloader.cpp
-objloader.h
-/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/objloader.h
-fstream
--
-iostream
--
-sstream
 -
 
 /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/objloader.h
@@ -524,16 +478,6 @@ algorithm
 triangle.h
 /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/triangle.h
 
-/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/solvers.cpp
-solvers.h
-/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/solvers.h
-cmath
--
-utility
--
-
-/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/solvers.h
-
 /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/sphere.cpp
 sphere.h
 /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/sphere.h
@@ -567,18 +511,6 @@ cmath
 /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/triangle.h
 ../object.h
 /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/object.h
-
-/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/triple.cpp
-triple.h
-/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/triple.h
-json/json.h
-/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/json/json.h
-cmath
--
-exception
--
-iostream
--
 
 /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/triple.h
 json/json_fwd.h

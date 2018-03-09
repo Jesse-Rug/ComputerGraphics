@@ -115,6 +115,9 @@ void Scene::render(Image &img)
             Ray ray(eye, (pixel - eye).normalized());
             Color col = trace(ray); */
 
+	    cerr << '\r' << x << ' ' << y ;
+	    //progress meter
+
             Color col;
             Point pixel;
             for(int i=0; i<ss; i++){
@@ -130,6 +133,7 @@ void Scene::render(Image &img)
             img(x, y) = col;
         }
     }
+    cerr << '\n';
 }
 
 // --- Misc functions ----------------------------------------------------------

@@ -22,8 +22,8 @@ class Material
         {
     	    if (!hasTexture)
 	        return (color);
-             //return texture.colorAt(u, v);
-	     return Color(u, v, 0);
+             return texture.colorAt(u, v);
+	     //return Color(u, v, 0);
         }
 
         Material(Color const &color, double ka, double kd, double ks, double n)
