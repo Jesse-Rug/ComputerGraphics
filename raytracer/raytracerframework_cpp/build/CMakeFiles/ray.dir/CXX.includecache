@@ -303,6 +303,8 @@ triple.h
 /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/triple.h
 image.h
 /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/image.h
+iostream
+-
 
 /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/object.h
 material.h
@@ -322,17 +324,17 @@ memory
 triple.h
 /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/triple.h
 
-/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/cylinder.cpp
-cylinder.hpp
-/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/cylinder.hpp
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/sphere.cpp
+sphere.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/sphere.h
 cmath
 -
+iostream
+-
 
-/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/cylinder.hpp
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/sphere.h
 ../object.h
 /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/object.h
-stdio.h
--
 
 /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/triple.h
 json/json_fwd.h

@@ -106,7 +106,7 @@ Vector Sphere::getTextureCoord(Point hit)
    normal.normalize();
    //normal is now a point on a unit sphere that points up(ish), centered around the origin
 
-   double u = atan2(normal.x , normal.z) /  (2* pi) + 0.5 + (angle * pi / 180);
+   double u = atan2(normal.x , normal.z) /  (2* pi) + 0.5 + (angle / 360);
    for(; u > 1.0; u -= 1.0 );  // or while (u > 1.0) u -= 1.0;  
    double v = 0.5 - (asin(normal.y) / pi);
    // std::atan2 returns on the range of [-PI, PI], dividing by 2 PI mapping to [-.5, .5] and finally to [0,1]

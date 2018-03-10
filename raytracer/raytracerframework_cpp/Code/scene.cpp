@@ -50,6 +50,14 @@ Color Scene::trace(Ray const &ray)
     } else 
 	color = obj->material.getColor(0, 0);
 
+    if (obj->material.hasNMap){
+	Vector uvq = obj->getTextureCoord(hit);
+        N = obj->material.getNormal(uvq.x, uvq.y, N);
+    }
+
+    //color = (N/2) + 0.5;
+	
+
 
 
 
@@ -121,7 +129,7 @@ void Scene::render(Image &img)
             Ray ray(eye, (pixel - eye).normalized());
             Color col = trace(ray); */
 
-	    cerr << '\r' << x << ' ' << y ;
+	    //cerr << '\r' << x << ' ' << y ;
 	    //progress meter
 
             Color col;
