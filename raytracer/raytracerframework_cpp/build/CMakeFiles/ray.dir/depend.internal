@@ -58,6 +58,18 @@ CMakeFiles/ray.dir/Code/raytracer.cpp.o
  /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/sphere.h
  /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/triangle.h
  /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/triple.h
+CMakeFiles/ray.dir/Code/reflect.cpp.o
+ /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/hit.h
+ /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/image.h
+ /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/json/json.h
+ /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/json/json_fwd.h
+ /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/light.h
+ /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/material.h
+ /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/object.h
+ /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/ray.h
+ /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/reflect.cpp
+ /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/scene.h
+ /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/triple.h
 CMakeFiles/ray.dir/Code/scene.cpp.o
  /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/hit.h
  /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/image.h

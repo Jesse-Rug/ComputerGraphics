@@ -140,6 +140,10 @@ Triple Triple::cross(Triple const &t) const
                   x*t.y - y*t.x);
 }
 
+Triple Triple::reflect(Triple const &t) const{
+    return t - (t.dot(*this) * 2 * (*this));
+}
+
 double Triple::length() const
 {
     return sqrt(length_2());

@@ -417,9 +417,32 @@ CMakeFiles/ray.dir/Code/main.cpp.o.provides: CMakeFiles/ray.dir/Code/main.cpp.o.
 
 CMakeFiles/ray.dir/Code/main.cpp.o.provides.build: CMakeFiles/ray.dir/Code/main.cpp.o
 
+CMakeFiles/ray.dir/Code/reflect.cpp.o: CMakeFiles/ray.dir/flags.make
+CMakeFiles/ray.dir/Code/reflect.cpp.o: ../Code/reflect.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/build/CMakeFiles $(CMAKE_PROGRESS_17)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/ray.dir/Code/reflect.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/reflect.cpp.o -c /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/reflect.cpp
+
+CMakeFiles/ray.dir/Code/reflect.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ray.dir/Code/reflect.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/reflect.cpp > CMakeFiles/ray.dir/Code/reflect.cpp.i
+
+CMakeFiles/ray.dir/Code/reflect.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ray.dir/Code/reflect.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/reflect.cpp -o CMakeFiles/ray.dir/Code/reflect.cpp.s
+
+CMakeFiles/ray.dir/Code/reflect.cpp.o.requires:
+.PHONY : CMakeFiles/ray.dir/Code/reflect.cpp.o.requires
+
+CMakeFiles/ray.dir/Code/reflect.cpp.o.provides: CMakeFiles/ray.dir/Code/reflect.cpp.o.requires
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/reflect.cpp.o.provides.build
+.PHONY : CMakeFiles/ray.dir/Code/reflect.cpp.o.provides
+
+CMakeFiles/ray.dir/Code/reflect.cpp.o.provides.build: CMakeFiles/ray.dir/Code/reflect.cpp.o
+
 CMakeFiles/ray.dir/Code/raytracer.cpp.o: CMakeFiles/ray.dir/flags.make
 CMakeFiles/ray.dir/Code/raytracer.cpp.o: ../Code/raytracer.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/build/CMakeFiles $(CMAKE_PROGRESS_17)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/build/CMakeFiles $(CMAKE_PROGRESS_18)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/ray.dir/Code/raytracer.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ray.dir/Code/raytracer.cpp.o -c /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/raytracer.cpp
 
@@ -458,6 +481,7 @@ ray_OBJECTS = \
 "CMakeFiles/ray.dir/Code/image.cpp.o" \
 "CMakeFiles/ray.dir/Code/triple.cpp.o" \
 "CMakeFiles/ray.dir/Code/main.cpp.o" \
+"CMakeFiles/ray.dir/Code/reflect.cpp.o" \
 "CMakeFiles/ray.dir/Code/raytracer.cpp.o"
 
 # External object files for target ray
@@ -479,6 +503,7 @@ ray: CMakeFiles/ray.dir/Code/objloader.cpp.o
 ray: CMakeFiles/ray.dir/Code/image.cpp.o
 ray: CMakeFiles/ray.dir/Code/triple.cpp.o
 ray: CMakeFiles/ray.dir/Code/main.cpp.o
+ray: CMakeFiles/ray.dir/Code/reflect.cpp.o
 ray: CMakeFiles/ray.dir/Code/raytracer.cpp.o
 ray: CMakeFiles/ray.dir/build.make
 ray: CMakeFiles/ray.dir/link.txt
@@ -505,6 +530,7 @@ CMakeFiles/ray.dir/requires: CMakeFiles/ray.dir/Code/objloader.cpp.o.requires
 CMakeFiles/ray.dir/requires: CMakeFiles/ray.dir/Code/image.cpp.o.requires
 CMakeFiles/ray.dir/requires: CMakeFiles/ray.dir/Code/triple.cpp.o.requires
 CMakeFiles/ray.dir/requires: CMakeFiles/ray.dir/Code/main.cpp.o.requires
+CMakeFiles/ray.dir/requires: CMakeFiles/ray.dir/Code/reflect.cpp.o.requires
 CMakeFiles/ray.dir/requires: CMakeFiles/ray.dir/Code/raytracer.cpp.o.requires
 .PHONY : CMakeFiles/ray.dir/requires
 

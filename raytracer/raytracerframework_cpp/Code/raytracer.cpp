@@ -123,11 +123,21 @@ Material Raytracer::parseMaterialNode(json const &node) const
     double n  = node["n"];
 
     if(node["color"].is_string()){
-        Image texture((node["color"]));
-        return Material(texture, ka, kd, ks, n);
+        Image texture(node["color"]);
+        try{
+            Image bump(node.at("bumpmap"));
+	    return Material(texture, bump, ka, kd, ks, n);
+	} catch (...) {
+            return Material(texture, ka, kd, ks, n);
+        }
     } else {
         Color color(node["color"]);
-        return Material(color, ka, kd, ks, n);
+        try{
+            Image bump(node.at("bumpmap"));
+	    return Material(color, bump, ka, kd, ks, n);
+	} catch (...) {
+            return Material(color, ka, kd, ks, n);
+        }
     } 
 }
 

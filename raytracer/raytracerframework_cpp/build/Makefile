@@ -259,6 +259,30 @@ Code/raytracer.cpp.s:
 	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/raytracer.cpp.s
 .PHONY : Code/raytracer.cpp.s
 
+Code/reflect.o: Code/reflect.cpp.o
+.PHONY : Code/reflect.o
+
+# target to build an object file
+Code/reflect.cpp.o:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/reflect.cpp.o
+.PHONY : Code/reflect.cpp.o
+
+Code/reflect.i: Code/reflect.cpp.i
+.PHONY : Code/reflect.i
+
+# target to preprocess a source file
+Code/reflect.cpp.i:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/reflect.cpp.i
+.PHONY : Code/reflect.cpp.i
+
+Code/reflect.s: Code/reflect.cpp.s
+.PHONY : Code/reflect.s
+
+# target to generate assembly for a file
+Code/reflect.cpp.s:
+	$(MAKE) -f CMakeFiles/ray.dir/build.make CMakeFiles/ray.dir/Code/reflect.cpp.s
+.PHONY : Code/reflect.cpp.s
+
 Code/scene.o: Code/scene.cpp.o
 .PHONY : Code/scene.o
 
@@ -550,6 +574,9 @@ help:
 	@echo "... Code/raytracer.o"
 	@echo "... Code/raytracer.i"
 	@echo "... Code/raytracer.s"
+	@echo "... Code/reflect.o"
+	@echo "... Code/reflect.i"
+	@echo "... Code/reflect.s"
 	@echo "... Code/scene.o"
 	@echo "... Code/scene.i"
 	@echo "... Code/scene.s"

@@ -81,22 +81,22 @@ angle(angle)
 
 Vector Sphere::getTextureCoord(Point hit)
 {
-    Point point((hit - position).normalized());
-    double pi = 3.14159265359;
-    Point normal;
-    normal.x = point.dot(rotMatrix[0]);
-    normal.y = point.dot(rotMatrix[1]);
-    normal.z = point.dot(rotMatrix[2]);
-    normal.normalize();
-    //normal is now a point on a unit sphere that points up(ish), centered around the origin
-    
-    double u = atan2(normal.x , normal.z) /  (2* pi) + 0.5 + (angle * pi / 180);
-    for(; u > 1.0; u -= 1.0 );  // or while (u > 1.0) u -= 1.0;
-    double v = 0.5 - (asin(normal.y) / pi);
-    // std::atan2 returns on the range of [-PI, PI], dividing by 2 PI mapping to [-.5, .5] and finally to [0,1]
-    // the final part adds the angle disposition
-    // https://en.wikipedia.org/wiki/UV_mapping
-    return Vector(u, v, 0);
+   Point point((hit - position).normalized());
+   double pi = 3.14159265359;
+   Point normal;
+   normal.x = point.dot(rotMatrix[0]);
+   normal.y = point.dot(rotMatrix[1]);
+   normal.z = point.dot(rotMatrix[2]); 
+   normal.normalize();
+   //normal is now a point on a unit sphere that points up(ish), centered around the origin
+
+   double u = atan2(normal.x , normal.z) /  (2* pi) + 0.5 + (angle / 360);
+   for(; u > 1.0; u -= 1.0 );  // or while (u > 1.0) u -= 1.0;  
+   double v = 0.5 - (asin(normal.y) / pi);
+   // std::atan2 returns on the range of [-PI, PI], dividing by 2 PI mapping to [-.5, .5] and finally to [0,1]
+   // the final part adds the angle disposition 
+   // https://en.wikipedia.org/wiki/UV_mapping
+   return Vector(u, v, 0);
 }
 
 

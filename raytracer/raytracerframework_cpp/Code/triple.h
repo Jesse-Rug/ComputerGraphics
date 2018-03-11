@@ -67,6 +67,7 @@ class Triple
 
         double dot(Triple const &t) const;      // dot product
         Triple cross(Triple const &t) const;    // cross product
+        Triple reflect(Triple const &t) const;
 
         double length() const;
         double length_2() const;                // length squared

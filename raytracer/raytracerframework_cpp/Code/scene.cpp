@@ -52,6 +52,14 @@ Color Scene::trace(Ray const &ray)
     } else
         color = obj->material.getColor(0,0);
 
+    if (obj->material.hasNMap){
+	Vector uvq = obj->getTextureCoord(hit);
+        N = obj->material.getNormal(uvq.x, uvq.y, N);
+    }
+
+    //color = (N/2) + 0.5;
+	
+
 
 
 
@@ -94,18 +102,10 @@ Color Scene::trace(Ray const &ray)
             Color ref = reflection * lights[i]->color;
             ambient += (lambert + ref);
         }
-        for(int j = 0; j< maxRef ;j++){
-            std::pair<Hit, ObjectPtr> objInt(lightInt(Ray( Point(hit + 0.000001 * L), L)));
-            if(objInt.second != nullptr){
-                double reflection = V.dot(R);
-                reflection = (reflection<0) ? 0: reflection;
-                reflection = material.ks * pow(reflection, material.n);
-                Color ref = reflection * objInt.second->material.getColor(0,0);
-                ambient += ref;
-            }
-        }
     }
-    
+
+    ambient += material.ks * reflectLight( Ray( Point(hit + 0.000001 * N), -N.reflect(V)), maxRef);    
+
     color = ambient;
 
     color.clamp(1.0);
@@ -122,7 +122,7 @@ void Scene::render(Image &img)
         for (unsigned x = 0; x < w; ++x)
         {
 
-	    cerr << '\r' << x << ' ' << y ;
+	    //cerr << '\r' << x << ' ' << y ;
 	    //progress meter
 
             Color col;

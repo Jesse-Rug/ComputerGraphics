@@ -15,6 +15,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/ray.dir/Code/image.cpp.o"
   "CMakeFiles/ray.dir/Code/triple.cpp.o"
   "CMakeFiles/ray.dir/Code/main.cpp.o"
+  "CMakeFiles/ray.dir/Code/reflect.cpp.o"
   "CMakeFiles/ray.dir/Code/raytracer.cpp.o"
   "ray.pdb"
   "ray"

@@ -38,6 +38,7 @@ class Scene
         void setShadows(bool s);
         void set_maxRef(int m);
         std::pair<Hit, ObjectPtr> lightInt(Ray ray);
+        Color reflectLight(Ray const &ray, int factor);
     
 
         unsigned getNumObject();
