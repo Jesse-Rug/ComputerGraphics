@@ -1,3 +1,1 @@
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/build/CMakeFiles/rebuild_cache.dir
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/build/CMakeFiles/edit_cache.dir
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/build/CMakeFiles/ray.dir
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/build/CMakeFiles/ray.dir

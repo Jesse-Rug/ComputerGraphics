@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,43 +6,43 @@
 
 #IncludeRegexTransform: 
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/hit.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/hit.h
 triple.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/triple.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/triple.h
 limits
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/image.cpp
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/image.cpp
 image.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/image.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/image.h
 lode/lodepng.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/lode/lodepng.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/lode/lodepng.h
 json/json.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/json/json.h
 iostream
 -
 fstream
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/image.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/image.h
 triple.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/triple.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/triple.h
 json/json.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/json/json.h
 string
 -
 vector
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/intersectLight.cpp
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/intersectLight.cpp
 scene.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/scene.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/scene.h
 limits
 -
 cmath
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/json/json.h
 algorithm
 -
 cassert
@@ -306,7 +306,7 @@ utility
 utility
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json_fwd.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/json/json_fwd.h
 cstdint
 -
 map
@@ -318,15 +318,15 @@ string
 vector
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/light.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/light.h
 triple.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/triple.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/triple.h
 memory
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/lode/lodepng.cpp
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/lode/lodepng.cpp
 lodepng.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/lode/lodepng.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/lode/lodepng.h
 limits.h
 -
 stdio.h
@@ -334,7 +334,7 @@ stdio.h
 stdlib.h
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/lode/lodepng.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/lode/lodepng.h
 string.h
 -
 vector
@@ -342,43 +342,43 @@ vector
 string
 -
 lodepng.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/lode/lodepng.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/lode/lodepng.h
 iostream
 -
 lodepng.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/lode/lodepng.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/lode/lodepng.h
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/main.cpp
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/main.cpp
 raytracer.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/raytracer.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/raytracer.h
 iostream
 -
 string
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/material.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/material.h
 triple.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/triple.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/triple.h
 image.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/image.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/image.h
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/object.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/object.h
 material.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/material.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/material.h
 image.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/image.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/image.h
 hit.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/hit.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/hit.h
 ray.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/ray.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/ray.h
 triple.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/triple.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/triple.h
 memory
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/objloader.cpp
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/objloader.cpp
 objloader.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/objloader.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/objloader.h
 fstream
 -
 iostream
@@ -386,41 +386,41 @@ iostream
 sstream
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/objloader.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/objloader.h
 vertex.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/vertex.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/vertex.h
 string
 -
 vector
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/ray.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/ray.h
 triple.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/triple.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/triple.h
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/raytracer.cpp
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/raytracer.cpp
 raytracer.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/raytracer.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/raytracer.h
 image.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/image.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/image.h
 light.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/light.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/light.h
 material.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/material.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/material.h
 triple.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/triple.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/triple.h
 shapes/sphere.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/sphere.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/sphere.h
 shapes/cylinder.hpp
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/cylinder.hpp
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/cylinder.hpp
 shapes/triangle.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/triangle.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/triangle.h
 shapes/plane.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/plane.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/plane.h
 shapes/quad.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/quad.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/quad.h
 json/json.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/json/json.h
 exception
 -
 fstream
@@ -428,25 +428,25 @@ fstream
 iostream
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/raytracer.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/raytracer.h
 scene.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/scene.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/scene.h
 string
 -
 json/json_fwd.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json_fwd.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/json/json_fwd.h
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/scene.cpp
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/scene.cpp
 scene.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/scene.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/scene.h
 hit.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/hit.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/hit.h
 image.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/image.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/image.h
 material.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/material.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/material.h
 ray.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/ray.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/ray.h
 cmath
 -
 limits
@@ -454,13 +454,13 @@ limits
 iostream
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/scene.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/scene.h
 light.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/light.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/light.h
 object.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/object.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/object.h
 triple.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/triple.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/triple.h
 vector
 -
 tuple
@@ -468,115 +468,115 @@ tuple
 utility
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/cylinder.cpp
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/cylinder.cpp
 cylinder.hpp
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/cylinder.hpp
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/cylinder.hpp
 cmath
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/cylinder.hpp
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/cylinder.hpp
 ../object.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/object.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/object.h
 stdio.h
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/example.cpp
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/example.cpp
 example.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/example.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/example.h
 cmath
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/example.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/example.h
 ../object.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/object.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/object.h
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/mesh.cpp
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/mesh.cpp
 mesh.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/mesh.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/mesh.h
 ../objloader.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/objloader.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/objloader.h
 cmath
 -
 limits
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/mesh.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/mesh.h
 triangle.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/triangle.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/triangle.h
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/plane.cpp
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/plane.cpp
 plane.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/plane.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/plane.h
 cmath
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/plane.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/plane.h
 ../object.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/object.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/object.h
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/quad.cpp
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/quad.cpp
 quad.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/quad.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/quad.h
 cmath
 -
 algorithm
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/quad.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/quad.h
 ../object.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/object.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/object.h
 triangle.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/triangle.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/triangle.h
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/solvers.cpp
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/solvers.cpp
 solvers.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/solvers.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/solvers.h
 cmath
 -
 utility
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/solvers.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/solvers.h
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/sphere.cpp
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/sphere.cpp
 sphere.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/sphere.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/sphere.h
 solvers.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/solvers.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/solvers.h
 cmath
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/sphere.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/sphere.h
 ../object.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/object.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/object.h
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/torus.cpp
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/torus.cpp
 torus.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/torus.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/torus.h
 cmath
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/torus.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/torus.h
 ../object.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/object.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/object.h
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/triangle.cpp
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/triangle.cpp
 triangle.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/triangle.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/triangle.h
 cfloat
 -
 cmath
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/shapes/triangle.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/shapes/triangle.h
 ../object.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/object.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/object.h
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/triple.cpp
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/triple.cpp
 triple.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/triple.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/triple.h
 json/json.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/json/json.h
 cmath
 -
 exception
@@ -584,11 +584,11 @@ exception
 iostream
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/triple.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/triple.h
 json/json_fwd.h
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/json/json_fwd.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/json/json_fwd.h
 iosfwd
 -
 
-/Users/paoladelhierro/Documents/RUG/ComputerGraphics/CG/week4/ComputerGraphics/raytracer/raytracerframework_cpp/Code/vertex.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/vertex.h
 

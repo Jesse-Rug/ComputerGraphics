@@ -75,10 +75,10 @@ Color Scene::trace(Ray const &ray)
 
     Color ambient = color * material.ka;
     //Color phong;
-    int n= getNumLights();
+    int numLights = getNumLights();
     
     
-    for(int i=0; i<n; i++){
+    for(int i=0; i < numLights; i++){
         L = lights[i]->position-hit;
         L.normalize();
         std::pair<Hit, ObjectPtr>objInt(lightInt(Ray( Point(hit + 0.000001 * L), L)));
@@ -94,8 +94,8 @@ Color Scene::trace(Ray const &ray)
             Color ref = reflection * lights[i]->color;
             ambient += (lambert + ref);
         }
-        for(int j=0; j< maxRef ;j++){
-            std::pair<Hit, ObjectPtr>objInt(lightInt(Ray( Point(hit + 0.000001 * L), L)));
+        for(int j = 0; j< maxRef ;j++){
+            std::pair<Hit, ObjectPtr> objInt(lightInt(Ray( Point(hit + 0.000001 * L), L)));
             if(objInt.second != nullptr){
                 double reflection = V.dot(R);
                 reflection = (reflection<0) ? 0: reflection;
