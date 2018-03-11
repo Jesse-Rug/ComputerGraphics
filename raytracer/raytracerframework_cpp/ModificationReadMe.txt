@@ -1,5 +1,2 @@
 
-modifications : scene file was modified to apply shading 
-		raytracer file was modified to parse additional shapes
-		several shapes were added
-		objloader file was modified to implement unitize
+modifications : Scene file now can create shadows with different light, do reflections and add texture to image. These features can be modified from the scene file and read from the raytracing file. If these features are not specified in the scene file the image will be rendered with default features (no shadows, no reflection and the original colors). 
