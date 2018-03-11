@@ -36,7 +36,8 @@ Color Scene::trace(Ray const &ray)
     Vector L = lights[0]->position-hit;
     L.normalize();
     Vector R = 2*(N.dot(L))*N - L;
-
+    R.normalize();
+    
     Material material;                  //the hit objects material without the texture/color
     material.ka = obj->material.ka; 
     material.kd = obj->material.kd;
@@ -47,8 +48,9 @@ Color Scene::trace(Ray const &ray)
     if (obj->material.hasTexture){
         Vector uvq = obj->getTextureCoord(hit);
 	color = obj->material.getColor(uvq.x, uvq.y);
-    } else 
-	color = obj->material.getColor(0, 0);
+    
+    } else
+        color = obj->material.getColor(0,0);
 
 
 
@@ -72,26 +74,39 @@ Color Scene::trace(Ray const &ray)
     ****************************************************/
 
     Color ambient = color * material.ka;
+    //Color phong;
+    int n= getNumLights();
     
-
-   /*if (lightInt( Ray( Point(hit - 0.000001 * L), (-1)*L)))
-        return ambient;
-    */
-
-    double  lamb = N.dot(L);
-    lamb = (lamb<0) ? lamb:0;
-    Color lambert =  -1 * lamb * color * material.kd;
-    R.normalize();
-    double reflection = V.dot(R);
-    reflection = (reflection<0) ? 0: reflection;
-    reflection = material.ks * pow(reflection, material.n);
-    Color ref = reflection * lights[0]->color;
-    //lambert = lambert* lights[0]->color;
-
-    color = ambient + lambert + ref;
-    //Color color = material.color;                  // place holder
-    /*Color color;
-    color.set(N.dot(ray.D)); */
+    
+    for(int i=0; i<n; i++){
+        L = lights[i]->position-hit;
+        L.normalize();
+        std::pair<Hit, ObjectPtr>objInt(lightInt(Ray( Point(hit + 0.000001 * L), L)));
+        if(objInt.second == nullptr || !shadows){
+            double  lamb = N.dot(L);
+            lamb = (lamb>0) ? lamb:0;
+            Color lambert =   lamb * color * material.kd;
+            R = 2*(N.dot(L))*N - L;
+            R.normalize();
+            double reflection = V.dot(R);
+            reflection = (reflection<0) ? 0: reflection;
+            reflection = material.ks * pow(reflection, material.n);
+            Color ref = reflection * lights[i]->color;
+            ambient += (lambert + ref);
+        }
+        for(int j=0; j< maxRef ;j++){
+            std::pair<Hit, ObjectPtr>objInt(lightInt(Ray( Point(hit + 0.000001 * L), L)));
+            if(objInt.second != nullptr){
+                double reflection = V.dot(R);
+                reflection = (reflection<0) ? 0: reflection;
+                reflection = material.ks * pow(reflection, material.n);
+                Color ref = reflection * objInt.second->material.getColor(0,0);
+                ambient += ref;
+            }
+        }
+    }
+    
+    color = ambient;
 
     color.clamp(1.0);
 
@@ -106,20 +121,6 @@ void Scene::render(Image &img)
     {
         for (unsigned x = 0; x < w; ++x)
         {
-/*            Color col(0,0,0);
-            Point pixel[4]; //(x + 0.5, h - 1 - y + 0.5, 0);
-            pixel[0] = Point(x + .25, h - 1 - y + 0.25 ,0);
-            pixel[1] = Point(x + .25, h - 1 - y + 0.75 ,0);
-            pixel[2] = Point(x + .75, h - 1 - y + 0.25 ,0);
-            pixel[3] = Point(x + .75, h - 1 - y + 0.75 ,0);
-            for(int i=0; i<4; i++){
-                Ray ray(eye, (pixel[i] - eye).normalized());
-                col += trace(ray);
-            } ///
-            col /= 4; 
- 	    Point pixel(x + 0.5, h - 1 - y + 0.5, 0);
-            Ray ray(eye, (pixel - eye).normalized());
-            Color col = trace(ray); */
 
 	    cerr << '\r' << x << ' ' << y ;
 	    //progress meter
@@ -163,12 +164,22 @@ void Scene::enableSS(int const &rays){
     ss = rays;
 }
 
+void Scene::set_maxRef(int m){
+    maxRef = m;
+}
 unsigned Scene::getNumObject()
 {
     return objects.size();
+}
+        
+void Scene::setShadows(bool s){
+    shadows = s;
 }
 
 unsigned Scene::getNumLights()
 {
     return lights.size();
 }
+
+
+        

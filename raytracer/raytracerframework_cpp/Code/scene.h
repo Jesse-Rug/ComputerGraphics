@@ -6,6 +6,8 @@
 #include "triple.h"
 
 #include <vector>
+#include <tuple>
+#include <utility>
 
 // Forward declerations
 class Ray;
@@ -17,6 +19,8 @@ class Scene
     std::vector<LightPtr> lights;   // no ptr needed, but kept for consistency
     Point eye;
     int ss;
+    bool shadows;
+    int maxRef;
 
     public:
 
@@ -31,7 +35,9 @@ class Scene
         void addLight(Light const &light);
         void setEye(Triple const &position);
         void enableSS(int const &rays);
-        bool lightInt(Ray ray);
+        void setShadows(bool s);
+        void set_maxRef(int m);
+        std::pair<Hit, ObjectPtr> lightInt(Ray ray);
     
 
         unsigned getNumObject();

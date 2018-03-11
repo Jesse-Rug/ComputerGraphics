@@ -151,6 +151,15 @@ try
         scene.enableSS(jsonscene["SuperSamplingFactor"]);
     else
         scene.enableSS(1);
+    
+    if(!jsonscene["Shadows"].is_null())
+        scene.setShadows(jsonscene["Shadows"]);
+        
+    if(!jsonscene["MaxRecursionDepth"].is_null())
+        scene.set_maxRef(jsonscene["MaxRecursionDepth"]);
+    else
+        scene.set_maxRef(0);
+ 
 
     // TODO: add your other configuration settings here
 

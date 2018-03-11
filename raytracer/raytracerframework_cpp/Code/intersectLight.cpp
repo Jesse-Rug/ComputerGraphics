@@ -9,7 +9,7 @@
 #include <limits>
 #include <cmath>
 
-bool Scene::lightInt(Ray ray){
+std::pair<Hit, ObjectPtr> Scene::lightInt(Ray ray){
     Hit light_hit(std::numeric_limits<double>::infinity(), Vector());
     ObjectPtr obj = nullptr;
     for (unsigned idx = 0; idx != objects.size(); ++idx)
@@ -20,8 +20,12 @@ bool Scene::lightInt(Ray ray){
             light_hit = hit;
             obj = objects[idx];
         }
+        
     }
+   
+   if(!obj)
+       return std::pair<Hit, ObjectPtr>(Hit::NO_HIT(), nullptr);
     
-    return obj ? true : false;
+   return std::pair<Hit, ObjectPtr>(light_hit, obj);
 }
 
