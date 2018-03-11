@@ -53,16 +53,16 @@
         },
         {
             "type": "sphere",
-            "comment": "Earth sphere",
+            "comment": "Eye sphere",
             "position": [140, 220, 400],
             "radius": 50,
             "rotation": [0,1,0],
-            "angle": 180,
+            "angle": 30,
             "material":
             {
                 "comment": "image is relative to scene file here!",
-                "color": [1.0, 0, 1.0],
-                "bumpmap": "../Scenes2/bumpmap0.png",
+                "color": "../Scenes2/eyetexture.png",
+                "bumpmap": "../Scenes2/bumpmap2.png",
                 "ka": 0.2,
                 "kd": 0.8,
                 "ks": 0.0,
