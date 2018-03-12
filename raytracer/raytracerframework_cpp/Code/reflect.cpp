@@ -9,17 +9,10 @@ Color Scene::reflectLight(Ray const &ray, int factor)
     if (factor == 0)
         return Color(0, 0, 0);
 
-    Hit min_hit(numeric_limits<double>::infinity(), Vector());
-    ObjectPtr obj = nullptr;
-    for (unsigned idx = 0; idx != objects.size(); ++idx)
-    {
-        Hit hit(objects[idx]->intersect(ray));
-        if (hit.t < min_hit.t)
-        {
-            min_hit = hit;
-            obj = objects[idx];
-        }
-    }
+  
+    std::pair<Hit, ObjectPtr>intersect(lightInt(ray));
+    Hit min_hit = get<0>(intersect);
+    ObjectPtr obj = get<1>(intersect);
     
     if (!obj) return Color(0.0, 0.0, 0.0);
 
@@ -45,20 +38,37 @@ Color Scene::reflectLight(Ray const &ray, int factor)
     } else
         color = obj->material.getColor(0,0);
 
+    if (obj->material.hasNMap){
+	Vector uvq = obj->getTextureCoord(hit);
+        N = obj->material.getNormal(uvq.x, uvq.y, N);
+    }
+    // apply Normal map
+
+    /****************************************************
+    * This is where you should insert the color
+    * calculation (Phong model).
+    *
+    * Given: material, hit, N, V, lights[]
+    * Sought: color
+    *
+    *  normal buffer :: color = (N/2) + 0.5;
+    ****************************************************/
 
     Color ambient = color * material.ka;
     //Color phong;
     int numLights = getNumLights();
+
+    double epsilon = 0.000001;
     
     
     for(int i=0; i < numLights; i++){
         L = lights[i]->position-hit;
         L.normalize();
-        std::pair<Hit, ObjectPtr>objInt(lightInt(Ray( Point(hit + 0.000001 * L), L)));
+        std::pair<Hit, ObjectPtr>objInt(lightInt(Ray( Point(hit + epsilon * L), L)));
         if(objInt.second == nullptr || !shadows){
             double  lamb = N.dot(L);
-            lamb = (lamb>0) ? lamb:0;
-            Color lambert =   lamb * color * material.kd;
+            lamb = (lamb > 0) ? lamb : 0;
+            Color lambert =   lamb * color * material.kd * lights[i]->color;
             R = 2*(N.dot(L))*N - L;
             R.normalize();
             double reflection = V.dot(R);
@@ -69,7 +79,7 @@ Color Scene::reflectLight(Ray const &ray, int factor)
         }
     }
 
-    ambient += material.ks * reflectLight( Ray( Point(hit + 0.000001 * L), N.reflect(V)), factor - 1);
+    ambient += material.ks * reflectLight( Ray( Point(hit + epsilon * L), -N.reflect(V)), factor - 1);
     
     color = ambient;
 

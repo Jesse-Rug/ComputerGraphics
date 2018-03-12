@@ -8,7 +8,7 @@
         {
             "type": "sphere",
             "comment": "Red Sphere",
-            "position": [290, 170, -150],
+            "position": [90, 320, -100],
             "radius": 60,
             "material": {
                 "color": [1.0, 0.0, 0.0],
@@ -20,9 +20,8 @@
         },
         {
             "type": "cylinder",
-            "comment": "Red Sphere",
-	    "pos1": [90, 320, 100],
-	    "pos2": [210, 270, 300],
+	    "pos1": [290, 100, -150],
+	    "pos2": [290, 230, -150],
             "radius": 60,
             "material": {
                 "color": [1.0, 0.0, 0.0],
@@ -30,6 +29,19 @@
                 "kd": 0.7,
                 "ks": 0.8,
                 "n": 32
+            }
+        },
+        {
+            "type": "plane",
+            "comment": "Red Sphere",
+	    "pos1": [290, 100, -150],
+	    "normal": [0.0, 0.0, -1.0],
+            "material": {
+                "color": [1.0, 0.0, 1.0],
+                "ka": 0.2,
+                "kd": 0.7,
+                "ks": 0.8,
+                "n": 1
             }
         }
     ]

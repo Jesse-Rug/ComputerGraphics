@@ -330,6 +330,14 @@ memory
 triple.h
 /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/triple.h
 
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/reflect.cpp
+scene.h
+/home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/scene.h
+limits
+-
+cmath
+-
+
 /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/scene.cpp
 scene.h
 /home/gebruiker/Progammas/School/CG/gitOpengl/raytracer/raytracerframework_cpp/Code/scene.h

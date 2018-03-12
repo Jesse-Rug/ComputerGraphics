@@ -14,6 +14,7 @@ class Material;
 class Raytracer
 {
     Scene scene;
+    int resolution;
 
     public:
 

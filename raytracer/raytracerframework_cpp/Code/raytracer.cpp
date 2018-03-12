@@ -69,9 +69,8 @@ bool Raytracer::parseObjectNode(json const &node)
     else if (node["type"] == "plane")
     {
         Point p1(node["pos1"]);
-        Point p2(node["pos2"]);
-        Point p3(node["pos3"]);
-        obj = ObjectPtr(new Plane(p1,p2,p3));
+        Vector normal(node["normal"]);
+        obj = ObjectPtr(new Plane(p1,normal));
     } 
     else if (node["type"] == "cylinder")
     {
@@ -80,12 +79,6 @@ bool Raytracer::parseObjectNode(json const &node)
 	double radius = node["radius"];
         obj = ObjectPtr(new Cylinder(p1, p2, (p1-p2).length(), radius));
     } 
- /*   else if (node["type"] == "plane")
-    {
-        Point p1(node["pos1"]);
-        Vector p2(node["pos2"]);
-        obj = ObjectPtr(new Plane(p1,p2));
-    } */
     else
     {
         cerr << "Unknown object type: " << node["type"] << ".\n";
@@ -169,9 +162,12 @@ try
         scene.set_maxRef(jsonscene["MaxRecursionDepth"]);
     else
         scene.set_maxRef(0);
- 
 
-    // TODO: add your other configuration settings here
+    if(!jsonscene["Resolution"].is_null())
+        resolution = jsonscene["Resolution"];
+    else
+        resolution = 400;
+ 
 
     for (auto const &lightNode : jsonscene["Lights"])
         scene.addLight(parseLightNode(lightNode));
@@ -197,8 +193,7 @@ catch (exception const &ex)
 
 void Raytracer::renderToFile(string const &ofname)
 {
-    // TODO: the size may be a settings in your file
-    Image img(400, 400);
+    Image img(resolution, resolution);
     cout << "Tracing...\n";
     scene.render(img);
     cout << "Writing image to " << ofname << "...\n";

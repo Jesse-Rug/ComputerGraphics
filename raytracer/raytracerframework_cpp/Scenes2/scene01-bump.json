@@ -2,7 +2,7 @@
     "Lights": [
         {
             "position": [-200, 600, 1500],
-            "color": [0.4, 0.4, 0.8]
+            "color": [1.0, 1.0, 1.0]
         }
     ],
     "Objects": [
@@ -25,12 +25,12 @@
             "comment": "Green sphere",
             "position": [210, 270, 300],
             "radius": 50,
-            "rotation": [0,1,0],
-            "angle": 50,
+            "rotation": [0.0 ,0.7 ,0.7 ],
+            "angle": 30,
             "material":
             {
                 "color": [0.0, 1.0, 0.0],
-                "bumpmap": "../Scenes2/bumpmap1.png",
+                "bumpmap": "../Scenes2/bumpmap2.png",
                 "ka": 0.2,
                 "kd": 0.3,
                 "ks": 0.5,

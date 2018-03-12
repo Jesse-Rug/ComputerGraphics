@@ -1,5 +1,6 @@
 
-modifications : scene file was modified to apply shading 
-		raytracer file was modified to parse additional shapes
-		several shapes were added
-		objloader file was modified to implement unitize
+modifications : Added multiple optional optional parameters
+		implemented additional physics laws which can be activated with optional parameters
+		added support for color-textures and normalmaps
+		added support for anti-alliassing 
+

@@ -18,6 +18,7 @@ Hit Plane::intersect(Ray const &ray)
     Vector N = d_normal;
 
     return Hit(t, N);
+
 }
 
 Plane::Plane(Point point0, Point point1, Point point2)
@@ -26,9 +27,7 @@ Plane::Plane(Point point0, Point point1, Point point2)
 {
   Vector v = point1 - point0;
   Vector u = point2 - point0;
-  d_normal.x = (v.y * u.z) - (v.z * u.y);
-  d_normal.y = (v.z * u.x) - (v.x * u.z);
-  d_normal.x = (v.x * u.y) - (v.y * u.x);
+  d_normal = u.cross(v);
 }
 
 Plane::Plane(Point point0, Vector normal)
