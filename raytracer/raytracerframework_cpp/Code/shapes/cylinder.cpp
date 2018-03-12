@@ -13,7 +13,7 @@ Hit Cylinder::intersect(Ray const&ray){
     double t;
     Vector N;
     
-    Point center (ray.O.x - position.x, ray.O.y -position.y, ray.O.z - position.z);
+    Point center (ray.O - position);
     
     double a = pow(ray.D.x, 2) + pow(ray.D.z, 2);
     double b = ray.D.x*center.x + ray.D.z*center.z;

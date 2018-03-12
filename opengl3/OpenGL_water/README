@@ -1,0 +1,20 @@
+This is a README file
+
+things that were added : 	QMatrices for the projection and all the model transformations. 
+				handles for all the GL objects
+				floats for the user-influenced metrics
+				several utility functions with abbriviated names
+				implementations for MainView::resizeGL(), MainView::setScale(), MainView::setRotation() and Model::unitize()
+
+things that were changed : 	implementations of ~MainView(), MainView::initializeGL(), MainView::createShaderProgram(), MainView::paintGL()
+
+main issues :			GLSL doesn't tell you when you give the wrong data type in a draw call. A very sneaky issue not found in the dontpanic file.
+
+controls : turn the dials to rotate the figures, slide the slider to resize the objects.
+
+bonus : unitize and IBOs were suggested to be bonus points and were implemented.
+
+Sugestions : 	In the assignement Screenshots are mentioned in the part about handing in and some screenshots are shown in the assignement.
+ 		The requirement of copying your version of those screenshots is not found in the assignement itslef or on the page. Only in the rules and assessment page.
+		This might cause people to miss it, as it almost did with us. 
+		
