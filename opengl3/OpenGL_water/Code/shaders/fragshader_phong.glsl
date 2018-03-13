@@ -24,7 +24,7 @@ out vec4 fColor;
 
 void main()
 {
-    vec3  lightvec = normalize(lights - vertCoord);
+    vec3 lightvec = normalize(lights - vertCoord);
     vec3 reflect =  reflect( lightvec, vertNormal);
     vec4 vieuwvec = u_project * vec4(vertCoord,1.0);
     vec3 incomL = normalize(-1 * vieuwvec.xyz);

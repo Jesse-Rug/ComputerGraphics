@@ -25,7 +25,7 @@ MainView::MainView(QWidget *parent) : QOpenGLWidget(parent) {
  *
  */
 MainView::~MainView() {
-    glDeleteTextures(1, &textureHandle);
+    //glDeleteTextures(1, &textureHandle);
     glDeleteBuffers(1, &watVBO);
     glDeleteBuffers(1, &watIBO);
     glDeleteVertexArrays(1, &watVAO);
@@ -65,23 +65,13 @@ void MainView::initializeGL() {
     glEnable(GL_DEPTH_TEST);
 
     // Enable backface culling
-    glEnable(GL_CULL_FACE);
+    //glEnable(GL_CULL_FACE);
 
     // Default is GL_LESS
     glDepthFunc(GL_LEQUAL);
 
-    //loadtexture.cc
-    QImage imageq(":/textures/cat_diff");
-    QVector<quint8> imagev(imageToBytes(imageq));
-    glGenTextures(1, &textureHandle);
-    glBindTexture(GL_TEXTURE_2D, textureHandle);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, imageq.width(), imageq.height(), 0,
-                 GL_RGBA, GL_UNSIGNED_BYTE, imagev.data());
-    glEnable(GL_TEXTURE_2D);
+    //loadTexture(":/textures/cat_diff", &textureHandle);
+    //glEnable(GL_TEXTURE_2D);
 
     // Set the color of the screen to be black on clear (new frame)
     glClearColor(0.2f, 0.5f, 0.7f, 0.0f);
@@ -112,25 +102,33 @@ void MainView::paintGL() {
     shaderProgram.bind();
 
 
-    glUniformMatrix4fv(u_project, 1, GL_FALSE, projectM.data());
+ //   glUniformMatrix4fv(u_vieuw, 1, GL_FALSE, vieuwM.data());
 
     // Draw here
 
-    QVector3D light(5.0, 5.0, -10.0);
+    QVector<float> light( {5.0f, 5.0f, -10.0f});
 
-    QVector3D  mat(0.5f, 0.4f, 0.3f);
+    QVector<float>  material({0.5f, 0.4f, 0.3f});
 
-    shaderProgram.setUniformValue("lights", light);
-    shaderProgram.setUniformValue("material", mat);
+    QMatrix3x3 normalM;
+    QMatrix4x4 iden = transform(modelM, &normalM);
 
-    QMatrix4x4 iden = transform(modelM);
-    QMatrix3x3 normalIden = iden.normalMatrix();
+    glUniformMatrix4fv(u_project, 1, GL_FALSE, projectM.data());
+    glUniformMatrix4fv(u_vieuw, 1, GL_FALSE, vieuwM.data());
+    glUniform3fv(u_light, 1, light.data());
+    glUniform3fv(u_material, 1, material.data());
 
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, textureHandle);
-    glUniform1i(sampler, 0);
+    //glUniform1i(u_numWaves, numWaves);
+    glUniform1fv(u_frequency, numWaves, frequencies.data());
+    glUniform1fv(u_amplitude, numWaves, amplitudes.data());
+    glUniform1fv(u_phase, numWaves, phases.data());
+
     glUniformMatrix4fv(u_model, 1, GL_FALSE, iden.data());
-    glUniformMatrix3fv(normals, 1, GL_FALSE, normalIden.data());
+    glUniformMatrix3fv(u_normalM, 1, GL_FALSE, normalM.data());
+
+    /*glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, textureHandle);
+    glUniform1i(sampler, 0); */
     glBindVertexArray(watVAO);
     glDrawElements(GL_TRIANGLES, verticeNumber, GL_UNSIGNED_INT, (GLvoid*)0);
 
@@ -174,7 +172,8 @@ void MainView::setScale(int scale)
 {
     qDebug() << "Scale changed to " << scale;
 
-    magni = static_cast<float>(scale) / 100;
+    //magni = static_cast<float>(scale) / 100;
+    magni = static_cast<float>(100 - ((100 - scale) * 4)) / 100;
 
     repaint();
 }

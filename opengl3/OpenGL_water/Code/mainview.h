@@ -22,12 +22,16 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
 
     size_t verticeNumber;
     GLuint watVAO, watVBO, watIBO;
-    GLuint textureHandle, samplerHandle;
-    GLuint u_model, u_project, normals, lights, material, sampler;
+  //  GLuint textureHandle, samplerHandle;
+    GLuint u_model, u_project, u_vieuw;
+    GLuint u_normalM, u_light, u_material;
+    int numWaves;
+    GLuint u_amplitude, u_frequency, u_phase;
     QMatrix4x4 modelM;
     QMatrix4x4 projectM;
     QMatrix4x4 vieuwM;
     float angleX, angleY, angleZ, magni;
+    QVector<float> amplitudes, frequencies, phases;
     QOpenGLShaderProgram  shaderProgram;
 
 public:
@@ -67,17 +71,15 @@ private slots:
 
 private:
     void createShaders();
-    void createShaderNormal();
-    void createShaderGouraund();
     void createShaderPhong();
+    void createShaderWater();
     QVector<quint8> imageToBytes(QImage image);
 
-    void genCube();
-    void genPyra();
     void genObj();
     void genObject(QString name);
     void prepset();
-    QMatrix4x4 transform(QMatrix4x4 shape);
+    void loadTexture(QString const texname, GLuint *textureHandle);
+    QMatrix4x4 transform(QMatrix4x4 shape, QMatrix3x3 *normal);
 
 };
 
