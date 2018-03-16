@@ -24,6 +24,7 @@ layout (location = 2) in vec2 vertTex_in;
 out vec3 vertCoord;
 out vec3 vertNormal;
 out vec2 vertTex;
+out float ratio;
 
 float waveHeight(int waveIdx, float location)
 {
@@ -46,26 +47,29 @@ void main()
     // gl_Position is the output (a vec4) of the vertex shader
     float z = 0;
     float norm = 0;
+    float maxAmp = 0;
 
     for(int index = 0; index != NWAVES; index++){
         z += waveHeight(index, vertTex_in.x);
         norm += waveDelta(index, vertTex_in.x);
+        maxAmp += abs(u_amplitude[index]);
     }
 
-    vec4 current = vec4(vertCoordinates_in.x, vertCoordinates_in.y, z, 1.0);
+    vec4 current = vec4(vertCoordinates_in.x, vertCoordinates_in.y,
+                        vertCoordinates_in.z + z, 1.0);
     current = u_model * current;
     current = u_vieuw * current;
-    current = u_project * current;
-    gl_Position = current;
+    gl_Position = u_project * current;
     //gl_Position = vec4(vertCoordinates_in, 1.0);
 
 
     //bring to tangent space for sphere.
-    vec3 normal =  normalize(vec3(0.0 , -norm, 1.0));
+    vec3 normal =  normalize(vec3(0.0 , -norm, 1));
 
     /// normalM in vertex of frag shader
     vertCoord = vec3(current);
-    vertNormal = normal * u_normalM;
+    vertNormal = u_normalM * normal;
     vertTex = vertTex_in;
+    ratio = smoothstep(-maxAmp, maxAmp, z);
 
 }

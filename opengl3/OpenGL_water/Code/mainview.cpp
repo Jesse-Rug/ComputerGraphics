@@ -106,9 +106,9 @@ void MainView::paintGL() {
 
     // Draw here
 
-    QVector<float> light( {5.0f, 5.0f, -10.0f});
+    QVector<float> light( {0.0f, 5.0f, -7.0f});
 
-    QVector<float>  material({0.5f, 0.4f, 0.3f});
+    QVector<float>  material({0.2f, 0.4f, 0.8f});
 
     QMatrix3x3 normalM;
     QMatrix4x4 iden = transform(modelM, &normalM);
