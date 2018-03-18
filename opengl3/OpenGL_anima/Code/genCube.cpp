@@ -1,6 +1,6 @@
 #include "mainview.h"
 
-void MainView::genCube() {
+/*void MainView::genCube() {
 
     glGenVertexArrays(1, &cubVAO);
     glGenBuffers(1, &cubVBO);
@@ -92,4 +92,4 @@ void MainView::genCube() {
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), 0);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), ((GLvoid*) (3 * sizeof(GLfloat))));
 
-}
+} */

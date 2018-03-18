@@ -25,19 +25,11 @@ MainView::MainView(QWidget *parent) : QOpenGLWidget(parent) {
  *
  */
 MainView::~MainView() {
-    glDeleteTextures(1, &textureHandle);
-    glDeleteTextures(1, &textureSphere);
-    glDeleteBuffers(1, &cubVBO);
-    glDeleteBuffers(1, &cubIBO);
-    glDeleteBuffers(1, &pyrVBO);
-    glDeleteBuffers(1, &pyrIBO);
-    glDeleteBuffers(1, &sphVBO);
-    glDeleteBuffers(1, &sphIBO);
-    glDeleteVertexArrays(1, &cubVAO);
-    glDeleteVertexArrays(1, &pyrVAO);
-    glDeleteVertexArrays(1, &sphVAO);
+    glDeleteTextures(1, &textures.at(0));
+    glDeleteBuffers(1, &vbos.at(0));
+    glDeleteBuffers(1, &ibos.at(0));
+    glDeleteVertexArrays(1, &vaos.at(0));
 
-    glDeleteTextures(1, &textureHandle);
     debugLogger->stopLogging();
 
     qDebug() << "MainView destructor";
@@ -79,9 +71,8 @@ void MainView::initializeGL() {
     glDepthFunc(GL_LEQUAL);
 
 
-
-    loadTexture(":/textures/cat_diff", &textureHandle);
-    loadTexture(":/textures/rug_logo", &textureSphere);
+    textures.push_back(0);
+    loadTexture(":/textures/cat_diff", &textures[0]);
 
     // Set the color of the screen to be black on clear (new frame)
     glClearColor(0.2f, 0.5f, 0.7f, 0.0f);
@@ -119,7 +110,7 @@ void MainView::paintGL() {
 
     // Draw here
 
-    QMatrix4x4 iden = transform(modelC);
+    QMatrix4x4 iden = transform(models.at(0));
     QMatrix3x3 normalIden(iden.normalMatrix());
 
     QVector3D light(5.0, 5.0, -10.0);
@@ -130,16 +121,16 @@ void MainView::paintGL() {
     shaderProgram->setUniformValue("material", mat);
 
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, textureSphere);
+    glBindTexture(GL_TEXTURE_2D, textures.at(0));
     glUniform1i(sampler, 0);
     glUniformMatrix4fv(u_model, 1, GL_FALSE, iden.data());
     glUniformMatrix3fv(normals, 1, GL_FALSE, normalIden.data());
-    glBindVertexArray(cubVAO);
-    glBindBuffer(GL_ARRAY_BUFFER, cubVBO);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cubIBO);
-    glDrawElements(GL_TRIANGLES, verticeNSphere, GL_UNSIGNED_INT, (GLvoid*)0);
+    glBindVertexArray(vaos.at(0));
+    glBindBuffer(GL_ARRAY_BUFFER, vbos.at(0));
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibos.at(0));
+    glDrawElements(GL_TRIANGLES, vertices.at(0), GL_UNSIGNED_INT, (GLvoid*)0);
 
-    iden = transform(modelP);
+    /*iden = transform(modelP);
     normalIden = iden.normalMatrix();
 
     glUniformMatrix4fv(u_model, 1, GL_FALSE, iden.data());
@@ -160,7 +151,7 @@ void MainView::paintGL() {
     glBindVertexArray(sphVAO);
     glBindBuffer(GL_ARRAY_BUFFER, sphVBO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, sphIBO);
-    //glDrawElements(GL_TRIANGLES, verticeNumber, GL_UNSIGNED_INT, (GLvoid*)0);
+    //glDrawElements(GL_TRIANGLES, verticeNumber, GL_UNSIGNED_INT, (GLvoid*)0); */
 
     shaderProgram->release();
 }

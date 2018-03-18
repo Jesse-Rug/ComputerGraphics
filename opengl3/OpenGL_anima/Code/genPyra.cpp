@@ -1,5 +1,6 @@
 #include "mainview.h"
 
+/*
 void MainView::genPyra() {
     glGenBuffers(1, &pyrVBO);
     glGenBuffers(1, &pyrIBO);
@@ -73,5 +74,5 @@ void MainView::genPyra() {
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), 0);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), ((GLvoid*) (3 * sizeof(GLfloat))));
 
-}
+} */
 

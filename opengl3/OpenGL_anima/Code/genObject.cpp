@@ -20,7 +20,7 @@ void MainView::genObject(QString name, GLuint *vao, GLuint *vbo, GLuint *ibo, si
     glBindVertexArray(*vao);
 
     glBindBuffer(GL_ARRAY_BUFFER, *vbo);
-    glBufferData(GL_ARRAY_BUFFER, buffer.size() * sizeof(float) , &(buffer.at(0)), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, buffer.size() * sizeof(float) ,  buffer.data(), GL_STATIC_DRAW);
     // &(buffer.at(0) works since the elements are strictly in sequence in memory
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, *ibo);
@@ -31,7 +31,6 @@ void MainView::genObject(QString name, GLuint *vao, GLuint *vbo, GLuint *ibo, si
     just indices.size() gave me half the triangles on a half object.
     I have no idea why.
     */
-
 
 
     glEnableVertexAttribArray(0);
