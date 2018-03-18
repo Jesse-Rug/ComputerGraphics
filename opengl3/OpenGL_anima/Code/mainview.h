@@ -20,11 +20,11 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
     QOpenGLDebugLogger *debugLogger;
     QTimer timer; // timer used for animation
 
-    size_t verticeNumber;
+    size_t verticeNumber, verticeNSphere;
     GLuint cubVAO, cubVBO, cubIBO;
     GLuint pyrVAO, pyrVBO, pyrIBO;
     GLuint sphVAO, sphVBO, sphIBO;
-    GLuint textureHandle, samplerHandle;
+    GLuint textureHandle, samplerHandle, textureSphere;
     GLuint u_model, u_project, normals, lights, material, sampler;
     QMatrix4x4 modelC, modelP, modelS;
     QMatrix4x4 projectM;
@@ -73,11 +73,12 @@ private:
     void createShaderGouraund();
     void createShaderPhong();
     QVector<quint8> imageToBytes(QImage image);
+    void loadTexture(QString const texname, GLuint *textureHandle);
 
     void genCube();
     void genPyra();
     void genObj();
-    void genObject(QString name);
+    void genObject(QString name, GLuint *vao, GLuint *vbo, GLuint *ibo, size_t *verticeN);
     void prepset();
     QMatrix4x4 transform(QMatrix4x4 shape);
 

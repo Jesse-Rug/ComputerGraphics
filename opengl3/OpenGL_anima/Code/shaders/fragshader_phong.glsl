@@ -40,6 +40,6 @@ void main()
 
     float gouraund = ambient + diffuse;
 
-    vec4 textureColor = texture2D(sampler, vertTex);
+    vec4 textureColor = texture(sampler, vertTex);
     fColor = gouraund * textureColor;
 }

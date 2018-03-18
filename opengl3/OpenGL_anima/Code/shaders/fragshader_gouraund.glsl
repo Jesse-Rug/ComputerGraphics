@@ -20,6 +20,6 @@ out vec4 fColor;
 
 void main()
 {
-    vec4 textureColor = texture2D(sampler, vertTex);
+    vec4 textureColor = texture(sampler, vertTex);
     fColor = vec4(vertColor, 1.0) * textureColor;
 }

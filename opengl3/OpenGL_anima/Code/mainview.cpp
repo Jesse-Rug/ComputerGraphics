@@ -26,6 +26,7 @@ MainView::MainView(QWidget *parent) : QOpenGLWidget(parent) {
  */
 MainView::~MainView() {
     glDeleteTextures(1, &textureHandle);
+    glDeleteTextures(1, &textureSphere);
     glDeleteBuffers(1, &cubVBO);
     glDeleteBuffers(1, &cubIBO);
     glDeleteBuffers(1, &pyrVBO);
@@ -77,18 +78,10 @@ void MainView::initializeGL() {
     // Default is GL_LESS
     glDepthFunc(GL_LEQUAL);
 
-    //loadtexture.cc
-    QImage imageq(":/textures/cat_diff");
-    QVector<quint8> imagev(imageToBytes(imageq));
-    glGenTextures(1, &textureHandle);
-    glBindTexture(GL_TEXTURE_2D, textureHandle);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, imageq.width(), imageq.height(), 0,
-                 GL_RGBA, GL_UNSIGNED_BYTE, imagev.data());
-    glEnable(GL_TEXTURE_2D);
+
+
+    loadTexture(":/textures/cat_diff", &textureHandle);
+    loadTexture(":/textures/rug_logo", &textureSphere);
 
     // Set the color of the screen to be black on clear (new frame)
     glClearColor(0.2f, 0.5f, 0.7f, 0.0f);
@@ -99,6 +92,9 @@ void MainView::initializeGL() {
     prepset();
 
     createShaders();
+
+
+    timer.start(1000.0 / 60.0);
 
 }
 
@@ -133,12 +129,15 @@ void MainView::paintGL() {
     shaderProgram->setUniformValue("lights", light);
     shaderProgram->setUniformValue("material", mat);
 
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, textureSphere);
+    glUniform1i(sampler, 0);
     glUniformMatrix4fv(u_model, 1, GL_FALSE, iden.data());
     glUniformMatrix3fv(normals, 1, GL_FALSE, normalIden.data());
     glBindVertexArray(cubVAO);
     glBindBuffer(GL_ARRAY_BUFFER, cubVBO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cubIBO);
-    //glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_BYTE, (GLvoid*)0);
+    glDrawElements(GL_TRIANGLES, verticeNSphere, GL_UNSIGNED_INT, (GLvoid*)0);
 
     iden = transform(modelP);
     normalIden = iden.normalMatrix();
@@ -161,7 +160,7 @@ void MainView::paintGL() {
     glBindVertexArray(sphVAO);
     glBindBuffer(GL_ARRAY_BUFFER, sphVBO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, sphIBO);
-    glDrawElements(GL_TRIANGLES, verticeNumber, GL_UNSIGNED_INT, (GLvoid*)0);
+    //glDrawElements(GL_TRIANGLES, verticeNumber, GL_UNSIGNED_INT, (GLvoid*)0);
 
     shaderProgram->release();
 }

@@ -104,9 +104,9 @@ void Model::unitize() {
              minZ = vertices.at(index).z();
      }
 
-     float shiftX = (maxX + minX) / 2;
-     float shiftY = (maxY + minY) / 2;
-     float shiftZ = (maxZ + minZ) / 2;
+     float shiftX = -(maxX + minX) / 2;
+     float shiftY = -(maxY + minY) / 2;
+     float shiftZ = -(maxZ + minZ) / 2;
      QVector3D shift(shiftX, shiftY, shiftZ);
 
      float scale = (maxX - minX) > (maxY - minY) ? (maxX - minX) : (maxY - minY);

@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     prepset.cpp \
     genObject.cpp \
     utility.cpp \
-    createShader.cpp
+    createShader.cpp \
+    loadtexture.cpp
 
 HEADERS  += mainwindow.h \
     mainview.h \
