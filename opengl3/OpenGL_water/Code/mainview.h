@@ -27,10 +27,11 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
     GLuint u_normalM, u_light, u_material;
     int numWaves;
     GLuint u_amplitude, u_frequency, u_phase;
+    GLuint u_time;
     QMatrix4x4 modelM;
     QMatrix4x4 projectM;
     QMatrix4x4 vieuwM;
-    float angleX, angleY, angleZ, magni;
+    float angleX, angleY, angleZ, magni, time;
     QVector<float> amplitudes, frequencies, phases;
     QOpenGLShaderProgram  shaderProgram;
 

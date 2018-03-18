@@ -48,8 +48,7 @@ void MainView::createShaderWater(){
     u_amplitude = shaderProgram.uniformLocation("u_amplitude");
     u_frequency = shaderProgram.uniformLocation("u_frequency");
     u_phase = shaderProgram.uniformLocation("u_phase");
-
-
+    u_time = shaderProgram.uniformLocation("u_time");
 
 
 }
