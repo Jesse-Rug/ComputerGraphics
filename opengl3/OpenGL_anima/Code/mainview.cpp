@@ -30,6 +30,11 @@ MainView::~MainView() {
     glDeleteBuffers(1, &ibos.at(0));
     glDeleteVertexArrays(1, &vaos.at(0));
 
+    glDeleteTextures(1, &textures.at(1));
+    glDeleteBuffers(1, &vbos.at(1));
+    glDeleteBuffers(1, &ibos.at(1));
+    glDeleteVertexArrays(1, &vaos.at(1));
+
     debugLogger->stopLogging();
 
     qDebug() << "MainView destructor";
@@ -74,10 +79,14 @@ void MainView::initializeGL() {
     textures.push_back(0);
     loadTexture(":/textures/cat_diff", &textures[0]);
 
+    textures.push_back(1);
+    loadTexture(":textures/rug_logo", &textures[1]);
+
     // Set the color of the screen to be black on clear (new frame)
     glClearColor(0.2f, 0.5f, 0.7f, 0.0f);
 
-
+    walk=0;
+    rotate =0;
     genObj();
 
     prepset();
@@ -110,8 +119,12 @@ void MainView::paintGL() {
 
     // Draw here
 
+    walk+=.04;
+
+    angleY=0;
     QMatrix4x4 iden = transform(models.at(0));
     QMatrix3x3 normalIden(iden.normalMatrix());
+    iden.translate(walk,0.0,0.0);
 
     QVector3D light(5.0, 5.0, -10.0);
 
@@ -129,6 +142,58 @@ void MainView::paintGL() {
     glBindBuffer(GL_ARRAY_BUFFER, vbos.at(0));
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibos.at(0));
     glDrawElements(GL_TRIANGLES, vertices.at(0), GL_UNSIGNED_INT, (GLvoid*)0);
+
+    iden = transform(models.at(1));
+    normalIden=iden.normalMatrix();
+    walk+=.04;
+    iden.translate(-1.5*walk,0.0,0.0);
+    shaderProgram->setUniformValue("lights", light);
+    shaderProgram->setUniformValue("material", mat);
+
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, textures.at(0));
+    glUniform1i(sampler, 0);
+    glUniformMatrix4fv(u_model, 1, GL_FALSE, iden.data());
+    glUniformMatrix3fv(normals, 1, GL_FALSE, normalIden.data());
+    glBindVertexArray(vaos.at(1));
+    glBindBuffer(GL_ARRAY_BUFFER, vbos.at(1));
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibos.at(1));
+    glDrawElements(GL_TRIANGLES, vertices.at(1), GL_UNSIGNED_INT, (GLvoid*)0);
+
+    angleY = rotate;
+    iden = transform(models.at(2));
+    rotate+=1;
+    normalIden=iden.normalMatrix();
+
+    shaderProgram->setUniformValue("lights", light);
+    shaderProgram->setUniformValue("material", mat);
+
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, textures.at(1));
+    glUniform1i(sampler, 0);
+    glUniformMatrix4fv(u_model, 1, GL_FALSE, iden.data());
+    glUniformMatrix3fv(normals, 1, GL_FALSE, normalIden.data());
+    glBindVertexArray(vaos.at(2));
+    glBindBuffer(GL_ARRAY_BUFFER, vbos.at(2));
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibos.at(2));
+    glDrawElements(GL_TRIANGLES, vertices.at(2), GL_UNSIGNED_INT, (GLvoid*)0);
+
+    angleY = 2*rotate;
+    iden = transform(models.at(3));
+    normalIden=iden.normalMatrix();
+
+    shaderProgram->setUniformValue("lights", light);
+    shaderProgram->setUniformValue("material", mat);
+
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, textures.at(1));
+    glUniform1i(sampler, 0);
+    glUniformMatrix4fv(u_model, 1, GL_FALSE, iden.data());
+    glUniformMatrix3fv(normals, 1, GL_FALSE, normalIden.data());
+    glBindVertexArray(vaos.at(3));
+    glBindBuffer(GL_ARRAY_BUFFER, vbos.at(3));
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibos.at(3));
+    glDrawElements(GL_TRIANGLES, vertices.at(3), GL_UNSIGNED_INT, (GLvoid*)0);
 
     /*iden = transform(modelP);
     normalIden = iden.normalMatrix();

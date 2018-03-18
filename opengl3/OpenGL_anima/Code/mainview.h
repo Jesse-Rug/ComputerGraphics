@@ -25,7 +25,7 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
     QVector<QMatrix4x4> models;
     GLuint u_model, u_project, normals, lights, material, sampler;
     QMatrix4x4 projectM;
-    float angleX, angleY, angleZ, magni;
+    float angleX, angleY, angleZ, magni, walk, rotate;
     QOpenGLShaderProgram  shaderProgramG, shaderProgramP, shaderProgramN;
     QOpenGLShaderProgram *shaderProgram;
 
