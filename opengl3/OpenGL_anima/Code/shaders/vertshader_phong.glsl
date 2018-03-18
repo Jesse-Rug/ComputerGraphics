@@ -10,6 +10,7 @@ layout (location = 2) in vec2 vertTex_in;
 
 // Specify the Uniforms of the vertex shader
 uniform mat4 u_model;
+uniform mat4 u_vieuw;
 uniform mat4 u_project;
 uniform mat3 normals;
    //uniform vec4 fragNormals;
@@ -28,6 +29,7 @@ void main()
     // Currently without any transformation
 
     vec4 model = u_model * vec4(vertCoordinates_in, 1.0);
+    model = u_vieuw * model;
     gl_Position = u_project * model;
 
     vertCoord = model.xyz;

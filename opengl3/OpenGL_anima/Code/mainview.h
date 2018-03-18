@@ -20,12 +20,15 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
     QOpenGLDebugLogger *debugLogger;
     QTimer timer; // timer used for animation
 
-    size_t objCount;
+    size_t objCount = 4;
     QVector<size_t> vertices;
     QVector<GLuint> vaos, vbos, ibos, textures, samplers;
     QVector<QMatrix4x4> models;
-    GLuint u_model, u_project, normals, lights, material, sampler;
-    QMatrix4x4 projectM;
+    QVector<QVector3D> axi, moveDir, AFPs;
+    QVector<float> rspeed;
+    size_t time = 0;
+    GLuint u_model, u_project, u_vieuw, normals, lights, material, sampler;
+    QMatrix4x4 vieuwM, projectM;
     float angleX, angleY, angleZ, magni, walk, rotate;
     QOpenGLShaderProgram  shaderProgramG, shaderProgramP, shaderProgramN;
     QOpenGLShaderProgram *shaderProgram;
@@ -78,7 +81,7 @@ private:
     void genObj();
     void genObject(QString name, GLuint *vao, GLuint *vbo, GLuint *ibo, size_t *verticeN);
     void prepset();
-    QMatrix4x4 transform(QMatrix4x4 shape, QMatrix3x3 *normal);
+    QMatrix4x4 transform(QMatrix4x4 shape, QMatrix3x3 *normal, size_t index);
 
 };
 

@@ -32,11 +32,6 @@ MainView::~MainView() {
         glDeleteVertexArrays(1, &vaos.at(0));
     }
 
-    glDeleteTextures(1, &textures.at(1));
-    glDeleteBuffers(1, &vbos.at(1));
-    glDeleteBuffers(1, &ibos.at(1));
-    glDeleteVertexArrays(1, &vaos.at(1));
-
     debugLogger->stopLogging();
 
     qDebug() << "MainView destructor";
@@ -77,18 +72,14 @@ void MainView::initializeGL() {
     // Default is GL_LESS
     glDepthFunc(GL_LEQUAL);
 
-    objCount = 1;
     textures.resize(objCount);
     loadTexture(":/textures/cat_diff", &textures[0]);
 
-    textures.push_back(1);
     loadTexture(":textures/rug_logo", &textures[1]);
 
     // Set the color of the screen to be black on clear (new frame)
     glClearColor(0.2f, 0.5f, 0.7f, 0.0f);
 
-    walk=0;
-    rotate =0;
     genObj();
 
     prepset();
@@ -116,33 +107,25 @@ void MainView::paintGL() {
 
     shaderProgram->bind();
 
+    time++;
 
-    glUniformMatrix4fv(u_project, 1, GL_FALSE, projectM.data());
-
-<<<<<<< HEAD
-    // Draw here
-
-    walk+=.04;
-
-    angleY=0;
-    QMatrix4x4 iden = transform(models.at(0));
-    QMatrix3x3 normalIden(iden.normalMatrix());
-    iden.translate(walk,0.0,0.0);
-
-=======
->>>>>>> fc154e1e62b8bd929463026dd4e235303d373504
     QVector3D light(5.0, 5.0, -10.0);
 
     QVector<QVector3D> materials({
-                QVector3D(0.5f, 0.4f, 0.3f)
+                                     QVector3D(0.5f, 0.4f, 0.3f),
+                                     QVector3D(0.5f, 0.4f, 0.3f),
+                                     QVector3D(0.5f, 0.4f, 0.3f),
+                                     QVector3D(0.5f, 0.4f, 0.3f)
                                  });
 
-    shaderProgram->setUniformValue("lights", light);
+    glUniform3f(lights, light.x(), light.y(), light.z());
+    glUniformMatrix4fv(u_project, 1, GL_FALSE, projectM.data());
+    glUniformMatrix4fv(u_vieuw, 1, GL_FALSE, vieuwM.data());
 
     QMatrix3x3 normalIden;
     // Draw here
     for (size_t idx = 0; idx != objCount; idx++){
-        QMatrix4x4 iden = transform(models.at(0), &normalIden);
+        QMatrix4x4 iden = transform(models.at(idx), &normalIden, idx);
 
         glUniform3f(material, materials.at(idx).x(), materials.at(idx).y(), materials.at(idx).z());
 
@@ -151,13 +134,13 @@ void MainView::paintGL() {
         glUniform1i(sampler, 0);
         glUniformMatrix4fv(u_model, 1, GL_FALSE, iden.data());
         glUniformMatrix3fv(normals, 1, GL_FALSE, normalIden.data());
-        glBindVertexArray(vaos.at(0));
-        glBindBuffer(GL_ARRAY_BUFFER, vbos.at(0));
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibos.at(0));
+        glBindVertexArray(vaos.at(idx));
+        glBindBuffer(GL_ARRAY_BUFFER, vbos.at(idx));
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibos.at(idx));
         glDrawElements(GL_TRIANGLES, vertices.at(0), GL_UNSIGNED_INT, (GLvoid*)0);
     }
 
-    iden = transform(models.at(1));
+    /*iden = transform(models.at(1));
     normalIden=iden.normalMatrix();
     walk+=.04;
     iden.translate(-1.5*walk,0.0,0.0);
@@ -283,6 +266,7 @@ void MainView::setShadingMode(ShadingMode shading)
 
     if (shading == ShadingMode::PHONG){
         u_model = shaderProgramP.uniformLocation("u_model");
+        u_vieuw = shaderProgramP.uniformLocation("u_vieuw");
         u_project= shaderProgramP.uniformLocation("u_project");
         normals = shaderProgramP.uniformLocation("normals");
         lights = shaderProgramP.uniformLocation("ligths");
@@ -296,6 +280,7 @@ void MainView::setShadingMode(ShadingMode shading)
 
     if (shading == ShadingMode::NORMAL){
         u_model = shaderProgramN.uniformLocation("u_model");
+        u_vieuw = shaderProgramN.uniformLocation("u_vieuw");
         u_project= shaderProgramN.uniformLocation("u_project");
         normals = shaderProgramN.uniformLocation("normals");
         lights = 0;
@@ -307,6 +292,7 @@ void MainView::setShadingMode(ShadingMode shading)
 
     if (shading == ShadingMode::GOURAUD){
         u_model = shaderProgramG.uniformLocation("u_model");
+        u_vieuw = shaderProgramG.uniformLocation("u_vieuw");
         u_project= shaderProgramG.uniformLocation("u_project");
         normals = shaderProgramG.uniformLocation("normals");
         lights = shaderProgramG.uniformLocation("ligths");

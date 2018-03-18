@@ -9,6 +9,7 @@ layout (location = 1) in vec3 vertColor_in;
 
 // Specify the Uniforms of the vertex shader
    uniform mat4 u_model;
+   uniform mat4 u_vieuw;
    uniform mat4 u_project;
 
 
@@ -20,6 +21,7 @@ void main()
     // gl_Position is the output (a vec4) of the vertex shader
     // Currently without any transformation
     vec4 model = u_model * vec4(vertCoordinates_in, 1.0);
+    model = u_vieuw * model;
     gl_Position = u_project * model;
     //gl_Position = vec4(vertCoordinates_in, 1.0);
 

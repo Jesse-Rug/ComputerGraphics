@@ -22,7 +22,8 @@ void MainView::createShaderNormal()
     }
 
     u_model = shaderProgramN.uniformLocation("u_model");
-    u_project= shaderProgramN.uniformLocation("u_project");
+    u_vieuw = shaderProgramN.uniformLocation("u_vieuw");
+    u_project = shaderProgramN.uniformLocation("u_project");
     normals = shaderProgramN.uniformLocation("normals");
 }
 
@@ -39,6 +40,7 @@ void MainView::createShaderPhong(){
     }
 
     u_model = shaderProgramP.uniformLocation("u_model");
+    u_vieuw = shaderProgramP.uniformLocation("u_vieuw");
     u_project= shaderProgramP.uniformLocation("u_project");
     normals = shaderProgramP.uniformLocation("normals");
     lights = shaderProgramP.uniformLocation("ligths");
@@ -61,6 +63,7 @@ void MainView::createShaderGouraund(){
     }
 
     u_model = shaderProgramG.uniformLocation("u_model");
+    u_vieuw = shaderProgramG.uniformLocation("u_vieuw");
     u_project= shaderProgramG.uniformLocation("u_project");
     normals = shaderProgramG.uniformLocation("normals");
     lights = shaderProgramG.uniformLocation("ligths");
