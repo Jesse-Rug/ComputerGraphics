@@ -76,6 +76,9 @@ void MainView::initializeGL() {
     // Set the color of the screen to be black on clear (new frame)
     glClearColor(0.2f, 0.5f, 0.7f, 0.0f);
 
+    // start the time
+    timer.start(1000.0 / 30.0);
+
 
     genObj();
 
@@ -108,7 +111,9 @@ void MainView::paintGL() {
 
     QVector<float> light( {0.0f, 5.0f, -7.0f});
 
-    QVector<float>  material({0.2f, 0.4f, 0.8f});
+    QVector<float>  material({0.2f, 0.4f, 0.3f});
+
+    time += 0.01;
 
     QMatrix3x3 normalM;
     QMatrix4x4 iden = transform(modelM, &normalM);
@@ -122,6 +127,7 @@ void MainView::paintGL() {
     glUniform1fv(u_frequency, numWaves, frequencies.data());
     glUniform1fv(u_amplitude, numWaves, amplitudes.data());
     glUniform1fv(u_phase, numWaves, phases.data());
+    glUniform1f(u_time, time);
 
     glUniformMatrix4fv(u_model, 1, GL_FALSE, iden.data());
     glUniformMatrix3fv(u_normalM, 1, GL_FALSE, normalM.data());
@@ -164,7 +170,7 @@ void MainView::setRotation(int rotateX, int rotateY, int rotateZ)
     angleZ = rotateZ;
 
 
-    repaint();
+    update();
 
 }
 
@@ -175,7 +181,7 @@ void MainView::setScale(int scale)
     //magni = static_cast<float>(scale) / 100;
     magni = static_cast<float>(100 - ((100 - scale) * 4)) / 100;
 
-    repaint();
+    update();
 }
 
 void MainView::setShadingMode(ShadingMode shading)

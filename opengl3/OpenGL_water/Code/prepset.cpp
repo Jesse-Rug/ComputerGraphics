@@ -2,6 +2,7 @@
 
 void MainView::prepset(){
     magni = 1.0;
+    time = 0.0;
 
     modelM.setToIdentity();
     projectM.setToIdentity();

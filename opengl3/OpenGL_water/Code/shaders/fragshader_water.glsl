@@ -34,8 +34,7 @@ void main()
 
     vec3 lightVec = normalize(u_light - vertCoord);
     vec3 reflectVec = reflect(-lightVec , normal);
-    vec4 viewVec = vec4(vertCoord, 1.0);
-    vec3 sightVec = normalize(-viewVec.xyz);
+    vec3 sightVec = normalize(-vertCoord);
 
     float ambient = u_material.x;
 
@@ -43,13 +42,16 @@ void main()
     diffuse = diffuse * u_material.y;
 
     float specular = dot(reflectVec, sightVec);
-    specular = max(specular * u_material.z , 0);
-    specular = pow(specular, 5);
+    specular = max(specular, 0);
+    specular = pow(specular, 25);
+//    specular *= u_material.z;
 
-    //float illum = ambient + diffuse + specular;
-    float illum = ambient+ diffuse;
+    float illum = ambient + diffuse;
+    //float illum = specular;
 
-    color = clamp (color * illum, 0.0 , 1.0);
+    color *= illum;
+    color += specular * vec3(1.0, 1.0, 1.0);
+    color = clamp(color, 0.0, 1.0);
 
     fColor = vec4(color, 1.0);
     //normal = normalize((normal / 2) + 0.5);
