@@ -4,11 +4,12 @@ void MainView::genObj(){
     /*genCube();*/
     //genPyra();
 
-    vaos.push_back(0);
-    vbos.push_back(0);
-    ibos.push_back(0);
-    vertices.push_back(0);
+    vaos.resize(objCount);
+    vbos.resize(objCount);
+    ibos.resize(objCount);
+    vertices.resize(objCount);
 
+<<<<<<< HEAD
     genObject(":/models/cat.obj", &vaos[0], &vbos[0], &ibos[0], &vertices[0]);
 
 
@@ -30,4 +31,13 @@ void MainView::genObj(){
     ibos.push_back(3);
     vertices.push_back(3);
     genObject(":/models/cube.obj", &vaos[3], &vbos[3], &ibos[3], &vertices[3]);
+=======
+    QVector<QString> objects({
+                     ":/models/cat.obj"
+                             });
+
+    for (size_t idx = 0; idx != objCount; idx++){
+        genObject(objects[idx], &vaos[idx], &vbos[idx], &ibos[idx], &vertices[idx]);
+    }
+>>>>>>> fc154e1e62b8bd929463026dd4e235303d373504
 }

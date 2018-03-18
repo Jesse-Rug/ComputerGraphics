@@ -7,6 +7,7 @@
 // These must have the same type and name!
 in vec3 vertColor;
 in vec2 vertTex;
+in vec3 spec;
 
 // Specify the Uniforms of the fragment shaders
 // uniform vec3 lightPosition; // for example
@@ -21,5 +22,5 @@ out vec4 fColor;
 void main()
 {
     vec4 textureColor = texture(sampler, vertTex);
-    fColor = vec4(vertColor, 1.0) * textureColor;
+    fColor = vec4(vertColor, 1.0) * textureColor + vec4(spec, 1.0);
 }

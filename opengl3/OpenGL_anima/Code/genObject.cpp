@@ -12,7 +12,6 @@ void MainView::genObject(QString name, GLuint *vao, GLuint *vbo, GLuint *ibo, si
     //buffer.reserve(2*sizeof(vertices));//im adding 3 colour to the 3 location bytes
 
 
-
     glGenVertexArrays(1, vao);
     glGenBuffers(1, vbo);
     glGenBuffers(1, ibo);

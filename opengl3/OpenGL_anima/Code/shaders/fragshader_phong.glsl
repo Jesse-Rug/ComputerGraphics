@@ -35,11 +35,11 @@ void main()
     diffuse = diffuse * material.y;
 
     float specular = dot(reflect, incomL);
-    specular = max(specular * material.z , 0);
+    specular = max(specular, 0);
     specular = pow(specular, 20);
 
     float gouraund = ambient + diffuse;
 
     vec4 textureColor = texture(sampler, vertTex);
-    fColor = gouraund * textureColor;
+    fColor = gouraund * textureColor + vec4(specular * vec3(1.0, 1.0, 1.0), 1.0);
 }
