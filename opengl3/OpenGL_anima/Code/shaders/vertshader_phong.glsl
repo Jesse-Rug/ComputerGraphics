@@ -31,7 +31,7 @@ void main()
     gl_Position = u_project * model;
 
     vertCoord = model.xyz;
-    vertNormal = normals * vertNormal_in;
+    vertNormal = vertNormal_in * normals ;
     vertTex = vertTex_in;
 
 }

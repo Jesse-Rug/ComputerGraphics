@@ -20,6 +20,7 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
     QOpenGLDebugLogger *debugLogger;
     QTimer timer; // timer used for animation
 
+    size_t objCount;
     QVector<size_t> vertices;
     QVector<GLuint> vaos, vbos, ibos, textures, samplers;
     QVector<QMatrix4x4> models;
@@ -77,7 +78,7 @@ private:
     void genObj();
     void genObject(QString name, GLuint *vao, GLuint *vbo, GLuint *ibo, size_t *verticeN);
     void prepset();
-    QMatrix4x4 transform(QMatrix4x4 shape);
+    QMatrix4x4 transform(QMatrix4x4 shape, QMatrix3x3 *normal);
 
 };
 

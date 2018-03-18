@@ -19,6 +19,7 @@ layout (location = 2) in vec2 vertTex_in;
 // Specify the output of the vertex stage
 out vec3 vertColor;
 out vec2 vertTex;
+out vec3 spec;
 
 /*
 
@@ -39,7 +40,7 @@ void main()
 
     vec3  lightvec = normalize(lights - vec3(model));
     // "normals" is the normal ADJUSTMENT matrix.
-    vec3  adjust = normals * vertNormals_in;
+    vec3  adjust = vertNormals_in * normals;
     vec3 reflect =  reflect( lightvec, adjust);
     vec3 incomL = normalize( -gl_Position.xyz );
 
@@ -49,13 +50,14 @@ void main()
     diffuse = diffuse * material.y;
 
     float specular = dot(reflect, incomL);
-    specular = max(specular * material.z , 0);
+    specular = max(specular, 0);
     specular = pow(specular, 20);
 
-    float gouraund = ambient + diffuse + specular;
+    float gouraund = ambient + diffuse;
     //float gouraund = s;
     vec3 col = vec3(0.5, 0.5, 0.5);
 
+    spec = specular * vec3(1.0, 1.0, 1.0);
     vertColor = vec3(gouraund);
     vertTex = vertTex_in;
 }

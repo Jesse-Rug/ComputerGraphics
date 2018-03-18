@@ -25,10 +25,12 @@ MainView::MainView(QWidget *parent) : QOpenGLWidget(parent) {
  *
  */
 MainView::~MainView() {
-    glDeleteTextures(1, &textures.at(0));
-    glDeleteBuffers(1, &vbos.at(0));
-    glDeleteBuffers(1, &ibos.at(0));
-    glDeleteVertexArrays(1, &vaos.at(0));
+    for (size_t idx = 0; idx != objCount; idx++){
+        glDeleteTextures(1, &textures.at(0));
+        glDeleteBuffers(1, &vbos.at(0));
+        glDeleteBuffers(1, &ibos.at(0));
+        glDeleteVertexArrays(1, &vaos.at(0));
+    }
 
     debugLogger->stopLogging();
 
@@ -70,8 +72,8 @@ void MainView::initializeGL() {
     // Default is GL_LESS
     glDepthFunc(GL_LEQUAL);
 
-
-    textures.push_back(0);
+    objCount = 1;
+    textures.resize(objCount);
     loadTexture(":/textures/cat_diff", &textures[0]);
 
     // Set the color of the screen to be black on clear (new frame)
@@ -108,27 +110,31 @@ void MainView::paintGL() {
 
     glUniformMatrix4fv(u_project, 1, GL_FALSE, projectM.data());
 
-    // Draw here
-
-    QMatrix4x4 iden = transform(models.at(0));
-    QMatrix3x3 normalIden(iden.normalMatrix());
-
     QVector3D light(5.0, 5.0, -10.0);
 
-    QVector3D  mat(0.5f, 0.4f, 0.3f);
+    QVector<QVector3D> materials({
+                QVector3D(0.5f, 0.4f, 0.3f)
+                                 });
 
     shaderProgram->setUniformValue("lights", light);
-    shaderProgram->setUniformValue("material", mat);
 
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, textures.at(0));
-    glUniform1i(sampler, 0);
-    glUniformMatrix4fv(u_model, 1, GL_FALSE, iden.data());
-    glUniformMatrix3fv(normals, 1, GL_FALSE, normalIden.data());
-    glBindVertexArray(vaos.at(0));
-    glBindBuffer(GL_ARRAY_BUFFER, vbos.at(0));
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibos.at(0));
-    glDrawElements(GL_TRIANGLES, vertices.at(0), GL_UNSIGNED_INT, (GLvoid*)0);
+    QMatrix3x3 normalIden;
+    // Draw here
+    for (size_t idx = 0; idx != objCount; idx++){
+        QMatrix4x4 iden = transform(models.at(0), &normalIden);
+
+        glUniform3f(material, materials.at(idx).x(), materials.at(idx).y(), materials.at(idx).z());
+
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, textures.at(0));
+        glUniform1i(sampler, 0);
+        glUniformMatrix4fv(u_model, 1, GL_FALSE, iden.data());
+        glUniformMatrix3fv(normals, 1, GL_FALSE, normalIden.data());
+        glBindVertexArray(vaos.at(0));
+        glBindBuffer(GL_ARRAY_BUFFER, vbos.at(0));
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibos.at(0));
+        glDrawElements(GL_TRIANGLES, vertices.at(0), GL_UNSIGNED_INT, (GLvoid*)0);
+    }
 
     /*iden = transform(modelP);
     normalIden = iden.normalMatrix();
@@ -185,7 +191,7 @@ void MainView::setRotation(int rotateX, int rotateY, int rotateZ)
     angleZ = rotateZ;
 
 
-    repaint();
+    update();
 
 }
 
@@ -195,7 +201,7 @@ void MainView::setScale(int scale)
 
     magni = static_cast<float>(scale) / 100;
 
-    repaint();
+    update();
 }
 
 void MainView::setShadingMode(ShadingMode shading)

@@ -5,7 +5,7 @@ void MainView::createShaders()
     createShaderGouraund();
     createShaderNormal();
     createShaderPhong();
-    shaderProgram = &shaderProgramG;
+    shaderProgram = &shaderProgramP;
 }
 
 void MainView::createShaderNormal()
