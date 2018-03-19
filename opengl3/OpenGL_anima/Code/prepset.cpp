@@ -3,7 +3,7 @@
 void MainView::prepset(){
     arcX = arcY = 0;
     arcspeedX = arcspeedY = 0;
-    arcSize = 1;
+    arcSize = 20;
     magni = 1.0;
     projectM.setToIdentity();
     vieuwM.setToIdentity();

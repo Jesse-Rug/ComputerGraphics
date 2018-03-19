@@ -115,14 +115,15 @@ void MainView::paintGL() {
 
     QVector3D eye(arcSize * std::cos(arcX) * std::sin(arcY),
                   arcSize * std::sin(arcX) * std::sin(arcY),
-                  arcSize * std::cos(arcY));
+                  arcSize * std::cos(arcY) - arcSize);
+    qDebug() << eye.z();
 
     QVector3D up(std::sin(arcX) * std::sin(arcY),
                  std::cos(arcY),
                  std::cos(arcX) * std::sin(arcY));
 
     vieuwM.setToIdentity();
-    vieuwM.lookAt(eye, QVector3D(0, 0, -arcSize/2), up);
+    vieuwM.lookAt(eye, QVector3D(0, 0, -arcSize), up);
 
     QVector3D light(5.0, 5.0, -10.0);
 
