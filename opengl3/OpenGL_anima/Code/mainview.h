@@ -3,6 +3,7 @@
 
 #include "model.h"
 #include "utils.h"
+#include <algorithm>
 
 #include <QKeyEvent>
 #include <QMouseEvent>
@@ -30,6 +31,7 @@ class MainView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
     GLuint u_model, u_project, u_vieuw, normals, lights, material, sampler;
     QMatrix4x4 vieuwM, projectM;
     float angleX, angleY, angleZ, magni, walk, rotate;
+    float arcX, arcspeedX, arcY, arcspeedY, arcSize;
     QOpenGLShaderProgram  shaderProgramG, shaderProgramP, shaderProgramN;
     QOpenGLShaderProgram *shaderProgram;
 

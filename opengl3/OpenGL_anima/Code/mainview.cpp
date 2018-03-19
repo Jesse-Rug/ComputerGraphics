@@ -109,6 +109,21 @@ void MainView::paintGL() {
 
     time++;
 
+    arcX += arcspeedX;
+    arcY = std::max(arcspeedY + arcY, -arcSize);
+    arcY = std::min(arcY, arcSize);
+
+    QVector3D eye(arcSize * std::cos(arcX) * std::sin(arcY),
+                  arcSize * std::sin(arcX) * std::sin(arcY),
+                  arcSize * std::cos(arcY));
+
+    QVector3D up(std::sin(arcX) * std::sin(arcY),
+                 std::cos(arcY),
+                 std::cos(arcX) * std::sin(arcY));
+
+    vieuwM.setToIdentity();
+    vieuwM.lookAt(eye, QVector3D(0, 0, -arcSize/2), up);
+
     QVector3D light(5.0, 5.0, -10.0);
 
     QVector<QVector3D> materials({
@@ -139,81 +154,6 @@ void MainView::paintGL() {
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibos.at(idx));
         glDrawElements(GL_TRIANGLES, vertices.at(0), GL_UNSIGNED_INT, (GLvoid*)0);
     }
-
-    /*iden = transform(models.at(1));
-    normalIden=iden.normalMatrix();
-    walk+=.04;
-    iden.translate(-1.5*walk,0.0,0.0);
-    shaderProgram->setUniformValue("lights", light);
-    shaderProgram->setUniformValue("material", mat);
-
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, textures.at(0));
-    glUniform1i(sampler, 0);
-    glUniformMatrix4fv(u_model, 1, GL_FALSE, iden.data());
-    glUniformMatrix3fv(normals, 1, GL_FALSE, normalIden.data());
-    glBindVertexArray(vaos.at(1));
-    glBindBuffer(GL_ARRAY_BUFFER, vbos.at(1));
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibos.at(1));
-    glDrawElements(GL_TRIANGLES, vertices.at(1), GL_UNSIGNED_INT, (GLvoid*)0);
-
-    angleY = rotate;
-    iden = transform(models.at(2));
-    rotate+=1;
-    normalIden=iden.normalMatrix();
-
-    shaderProgram->setUniformValue("lights", light);
-    shaderProgram->setUniformValue("material", mat);
-
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, textures.at(1));
-    glUniform1i(sampler, 0);
-    glUniformMatrix4fv(u_model, 1, GL_FALSE, iden.data());
-    glUniformMatrix3fv(normals, 1, GL_FALSE, normalIden.data());
-    glBindVertexArray(vaos.at(2));
-    glBindBuffer(GL_ARRAY_BUFFER, vbos.at(2));
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibos.at(2));
-    glDrawElements(GL_TRIANGLES, vertices.at(2), GL_UNSIGNED_INT, (GLvoid*)0);
-
-    angleY = 2*rotate;
-    iden = transform(models.at(3));
-    normalIden=iden.normalMatrix();
-
-    shaderProgram->setUniformValue("lights", light);
-    shaderProgram->setUniformValue("material", mat);
-
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, textures.at(1));
-    glUniform1i(sampler, 0);
-    glUniformMatrix4fv(u_model, 1, GL_FALSE, iden.data());
-    glUniformMatrix3fv(normals, 1, GL_FALSE, normalIden.data());
-    glBindVertexArray(vaos.at(3));
-    glBindBuffer(GL_ARRAY_BUFFER, vbos.at(3));
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibos.at(3));
-    glDrawElements(GL_TRIANGLES, vertices.at(3), GL_UNSIGNED_INT, (GLvoid*)0);
-
-    /*iden = transform(modelP);
-    normalIden = iden.normalMatrix();
-
-    glUniformMatrix4fv(u_model, 1, GL_FALSE, iden.data());
-    glUniformMatrix3fv(normals, 1, GL_FALSE, normalIden.data());
-    glBindVertexArray(pyrVAO);
-    glBindBuffer(GL_ARRAY_BUFFER, pyrVBO);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, pyrIBO);
-    //glDrawElements(GL_TRIANGLES, 18, GL_UNSIGNED_BYTE, (GLvoid*)0);
-
-    iden = transform(modelS);
-    normalIden = iden.normalMatrix();
-
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, textureHandle);
-    glUniform1i(sampler, 0);
-    glUniformMatrix4fv(u_model, 1, GL_FALSE, iden.data());
-    glUniformMatrix3fv(normals, 1, GL_FALSE, normalIden.data());
-    glBindVertexArray(sphVAO);
-    glBindBuffer(GL_ARRAY_BUFFER, sphVBO);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, sphIBO);
-    //glDrawElements(GL_TRIANGLES, verticeNumber, GL_UNSIGNED_INT, (GLvoid*)0); */
 
     shaderProgram->release();
 }
